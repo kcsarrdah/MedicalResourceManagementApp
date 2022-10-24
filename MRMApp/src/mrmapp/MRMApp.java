@@ -16,6 +16,10 @@ public class MRMApp {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Helloo Worlddd");
+        
+        LoginPage lp = new LoginPage();
+        lp.show();
+        
     }
     
 }
