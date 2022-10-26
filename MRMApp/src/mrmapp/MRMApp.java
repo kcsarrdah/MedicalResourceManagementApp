@@ -23,10 +23,10 @@ public class MRMApp {
         
         
         
-        user albert = new user("albertisatest", "123456789", "doctor"); 
-        user robin = new user("robinisatest", "1234567890", "patient"); 
-        user parvati = new user("parvatiisatest", "123456789012", "person");
-        user jagrawal = new user("jaggu", "whydoiexist", "person");
+        user albert = new user("albert", "123456789", "doctor"); 
+        user robin = new user("robin", "1234567890", "communityAdmin"); 
+        user parvati = new user("parvati", "123456789012", "patient");
+        user jagrawal = new user("jagrawal", "whydoiexist", "person");
         user krishnna = new user("krishnna", "password", "systemAdmin");
         
         users.put(albert.getUsername(), albert);

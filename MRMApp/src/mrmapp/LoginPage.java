@@ -6,6 +6,10 @@ package mrmapp;
 
 import javax.swing.JOptionPane;
 import static mrmapp.MRMApp.users;
+import views.communityAdminDashboard;
+import views.doctorDashboard;
+import views.patientDashboard;
+import views.systemAdminDashboard;
 
 /**
  *
@@ -144,6 +148,27 @@ public class LoginPage extends javax.swing.JFrame {
         System.out.println(password);
         if(users.containsKey(userName) && users.get(userName).getPassword().equals(password)){
             JOptionPane.showMessageDialog(this, "Login Successful");
+            System.out.println(users.get(userName).getType());
+             if(users.get(userName).getType().equals("systemAdmin")){
+                this.hide();
+                systemAdminDashboard sd = new systemAdminDashboard();
+                sd.show();
+            }
+             else if(users.get(userName).getType().equals("patient")){
+                 this.hide();
+                 patientDashboard pd = new patientDashboard();
+                 pd.show();
+             }
+              else if(users.get(userName).getType().equals("doctor")){
+                 this.hide();
+                 doctorDashboard dd = new doctorDashboard();
+                 dd.show();
+             }
+              else if(users.get(userName).getType().equals("communityAdmin")){
+                 this.hide();
+                 communityAdminDashboard cd = new communityAdminDashboard();
+                 this.show();
+             }
         }
         else{
             JOptionPane.showMessageDialog(this, "please enter correct details");
