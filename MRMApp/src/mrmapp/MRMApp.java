@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import models.user;
 import java.util.HashMap;
 import models.city;
+import models.community;
+import models.communityAdmin;
 import models.doctor;
 import models.hospital;
 import models.patient;
@@ -17,11 +19,14 @@ import models.patient;
  * @author kcsar
  */
 public class MRMApp {
-    static HashMap<String, user> users = new HashMap<String, user>();
-    public static HashMap<String, city> cities = new HashMap<String, city>();
-    static HashMap<String, doctor> doctors = new HashMap<String, doctor>();
-    static HashMap<String, patient> patients = new HashMap<String, patient>();
-    static HashMap<String, hospital> hospitals = new HashMap<String, hospital>();
+    public static HashMap<String, user> users = new HashMap<String, user>();
+    public static HashMap<String, doctor> doctors = new HashMap<String, doctor>();
+    public static HashMap<String, patient> patients = new HashMap<String, patient>();
+    public static HashMap<String, hospital> hospitals = new HashMap<String, hospital>();
+    public static HashMap<String, community> communities = new HashMap<String, community>();
+    public static HashMap<String, communityAdmin> communityAdmins = new HashMap<String, communityAdmin>();
+    public static ArrayList<String> cities = new ArrayList<String>();
+    
 
     /**
      * @param args the command line arguments

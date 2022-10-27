@@ -8,18 +8,21 @@ package models;
  *
  * @author kcsar
  */
-public class person {
+public class person extends house{
     private String firstName;
     private String lastName;
     private int age;
     private String gender;
 
-    public person(String firstName, String lastName, int age, String gender) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.gender = gender;
+    public person(String firstName, String lastName, int age, String gender, String houseName, String communityName, int zip, String cityName) {
+        super(houseName, communityName, zip, cityName);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setGender(gender);
+        this.setAge(age);
     }
+
+
 
     public String getFirstName() {
         return firstName;

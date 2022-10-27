@@ -9,17 +9,17 @@ package models;
  * @author kcsar
  */
 public class city {
-    private String name;
+    private String cityName;
 
-    public city(String name) {
-        this.name = name;
+    public city(String cityName) {
+        this.cityName = cityName;
     }
 
     public String getName() {
-        return name;
+        return cityName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.cityName = cityName;
     }
 }

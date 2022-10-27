@@ -37,6 +37,7 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         hositals = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
         users = new javax.swing.JButton();
+        btnCreateDoc = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -100,6 +101,13 @@ public class systemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnCreateDoc.setText("Create Doctor");
+        btnCreateDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateDocActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,12 +124,14 @@ public class systemAdminDashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(cities, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(users, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(communities, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                .addGap(33, 33, 33)
-                .addComponent(hositals)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hositals)
+                    .addComponent(btnCreateDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43))
         );
 
@@ -138,7 +148,9 @@ public class systemAdminDashboard extends javax.swing.JFrame {
                     .addComponent(communities)
                     .addComponent(hositals))
                 .addGap(27, 27, 27)
-                .addComponent(users)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(users)
+                    .addComponent(btnCreateDoc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(btnLogOut)
                 .addContainerGap())
@@ -161,6 +173,13 @@ public class systemAdminDashboard extends javax.swing.JFrame {
     private void usersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usersActionPerformed
+
+    private void btnCreateDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDocActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        createDoc cd = new createDoc();
+        cd.show();
+    }//GEN-LAST:event_btnCreateDocActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,6 +217,7 @@ public class systemAdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateDoc;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton cities;
     private javax.swing.JButton communities;

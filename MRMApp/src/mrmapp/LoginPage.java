@@ -145,10 +145,10 @@ public class LoginPage extends javax.swing.JFrame {
         
         String userName = textField.getText();
         String password = passwordField.getText();
-        System.out.println(password);
+       
         if(users.containsKey(userName) && users.get(userName).getPassword().equals(password)){
             JOptionPane.showMessageDialog(this, "Login Successful");
-            System.out.println(users.get(userName).getType());
+            
              if(users.get(userName).getType().equals("systemAdmin")){
                 this.hide();
                 systemAdminDashboard sd = new systemAdminDashboard();

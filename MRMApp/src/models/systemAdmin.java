@@ -14,8 +14,5 @@ public class systemAdmin {
     
     static void createCity(){
         createCity cr = new createCity();
-        city city = new city();
-        //change city name to cr.getname
-        city.setName("name");
     }
 }

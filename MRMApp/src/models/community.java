@@ -9,22 +9,22 @@ package models;
  * @author kcsar
  */
 public class community extends city{
-    private String name;
+    private String communityName;
     private int zip;
     
 
-    community(String name, int zip, String cityName) {
+    community(String communityName, int zip, String cityName) {
         super(cityName);
-        this.setName(name);
+        this.setName(communityName);
         this.setZip(zip);
     }
 
     public String getName() {
-        return name;
+        return communityName;
     }
 
-    public void setName(String name){
-        this.name = name;
+    public void setName(String communityName){
+        this.communityName = communityName;
     }
     
     public int getZip() {

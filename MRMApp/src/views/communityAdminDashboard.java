@@ -4,7 +4,10 @@
  */
 package views;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import mrmapp.LoginPage;
+import static mrmapp.MRMApp.cities;
 
 /**
  *
@@ -30,7 +33,10 @@ public class communityAdminDashboard extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnCity = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnCreateDoc = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,7 +49,28 @@ public class communityAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Create Hospital");
+        btnCity.setText("Cities");
+        btnCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCityActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Communities");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        btnCreateDoc.setText("Create Doctor");
+        btnCreateDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateDocActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("jButton4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,8 +85,16 @@ public class communityAdminDashboard extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(jButton2))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCity)
+                                .addGap(27, 27, 27)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(btnCreateDoc))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,8 +102,13 @@ public class communityAdminDashboard extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCity)
+                    .addComponent(jButton2)
+                    .addComponent(btnCreateDoc))
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
         );
@@ -82,6 +122,33 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         LoginPage lp = new LoginPage();
         lp.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCityActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnCityActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+                this.hide();
+        viewItemsPage view = new viewItemsPage();
+        view.tfHeader.setText("City");
+        String[] columnNames = {"Cities"};
+        String[][] rows = new String[cities.size()][1];
+        for(int i=0;i<cities.size();i++) {
+            rows[i][0] = cities.get(i);
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable2.setModel(model);
+        view.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnCreateDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDocActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        createDoc cd = new createDoc();
+        cd.show();
+    }//GEN-LAST:event_btnCreateDocActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,8 +186,11 @@ public class communityAdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnCity;
+    private javax.swing.JButton btnCreateDoc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
