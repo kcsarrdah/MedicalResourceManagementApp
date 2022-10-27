@@ -6,8 +6,10 @@ package views;
 
 import java.util.HashMap;
 import models.community;
+import models.patient;
 import static mrmapp.MRMApp.cities;
 import static mrmapp.MRMApp.communities;
+import static mrmapp.MRMApp.patients;
 
 /**
  *
@@ -168,6 +170,15 @@ public class viewItemsPage extends javax.swing.JFrame {
             }
         }
         ch.show();
+        }
+        else if(jlHeader.getText() == "Patients"){
+            this.hide();
+            createPatient cp = new createPatient();
+            cp.jcCity.removeAll();
+            for(int i=0;i<cities.size();i++) {
+                cp.jcCity.addItem(cities.get(i));
+            }
+        cp.show();
         }
 
         

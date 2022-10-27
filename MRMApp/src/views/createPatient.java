@@ -4,7 +4,10 @@
  */
 package views;
 
+import java.util.HashMap;
+import models.community;
 import models.patient;
+import static mrmapp.MRMApp.communities;
 import static mrmapp.MRMApp.patients;
 
 /**
@@ -62,7 +65,12 @@ public class createPatient extends javax.swing.JFrame {
 
         jLabel12.setText("password");
 
-        jcGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
+        jcGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcGenderActionPerformed(evt);
+            }
+        });
 
         tfFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,13 +84,15 @@ public class createPatient extends javax.swing.JFrame {
 
         jLabel14.setText("Community");
 
-        jcCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel5.setText("Address");
 
         jLabel6.setText("City");
 
-        jcCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCityActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Zip Code");
 
@@ -259,7 +269,7 @@ public class createPatient extends javax.swing.JFrame {
         patient p = new patient(tfUserName.getText(), jpPassword.getText(), tfHospital.getText(), tfFirstName.getText(), tfLastName.getText(), Integer.parseInt(tfAge.getText()), jcGender.getSelectedItem().toString(), tfHouseName.getText(), jcCommunity.getSelectedItem().toString(), Integer.parseInt(tfZipCode.getText()), jcCity.getSelectedItem().toString());
         patients.put(p.getUsername(), p);
         this.hide();
-        communityAdminDashboard ca = new communityAdminDashboard();
+        systemAdminDashboard ca = new systemAdminDashboard();
         ca.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -270,6 +280,21 @@ public class createPatient extends javax.swing.JFrame {
     private void tfFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFirstNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfFirstNameActionPerformed
+
+    private void jcGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcGenderActionPerformed
+
+    private void jcCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCityActionPerformed
+        // TODO add your handling code here:
+        jcCommunity.removeAllItems();
+        for(HashMap.Entry<String, community> set : communities.entrySet()) {
+            String cityName = set.getValue().getCityName();
+            if(jcCity.getSelectedItem().toString().equals(cityName)) {
+                jcCommunity.addItem(set.getValue().getName());
+            }
+       }
+    }//GEN-LAST:event_jcCityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,9 +346,9 @@ public class createPatient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JComboBox<String> jcCity;
-    private javax.swing.JComboBox<String> jcCommunity;
-    private javax.swing.JComboBox<String> jcGender;
+    public javax.swing.JComboBox<String> jcCity;
+    public javax.swing.JComboBox<String> jcCommunity;
+    public javax.swing.JComboBox<String> jcGender;
     private javax.swing.JPasswordField jpPassword;
     private javax.swing.JTextField tfAddress;
     private javax.swing.JTextField tfAge;
