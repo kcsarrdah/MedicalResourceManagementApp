@@ -8,6 +8,6 @@ package models;
  *
  * @author kcsar
  */
-public class communityAdmin {
+public class communityAdmin{
     
 }

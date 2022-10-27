@@ -9,5 +9,7 @@ package models;
  * @author kcsar
  */
 public class vitalSigns {
+    private int heartRate;
+    private int bloodPressure;
     
 }

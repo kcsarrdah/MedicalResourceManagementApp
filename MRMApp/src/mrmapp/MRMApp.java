@@ -7,6 +7,9 @@ package mrmapp;
 import java.util.ArrayList;
 import models.user;
 import java.util.HashMap;
+import models.city;
+import models.doctor;
+import models.patient;
 
 /**
  *
@@ -14,6 +17,9 @@ import java.util.HashMap;
  */
 public class MRMApp {
     static HashMap<String, user> users = new HashMap<String, user>();
+    static HashMap<String, city> cities = new HashMap<String, city>();
+    static HashMap<String, doctor> doctors = new HashMap<String, doctor>();
+    static HashMap<String, patient> patients = new HashMap<String, patient>();
 
     /**
      * @param args the command line arguments
@@ -34,7 +40,6 @@ public class MRMApp {
         users.put(parvati.getUsername(), parvati);
         users.put(jagrawal.getUsername(), jagrawal);
         users.put(krishnna.getUsername(), krishnna);
-        
         
         
         LoginPage lp = new LoginPage();

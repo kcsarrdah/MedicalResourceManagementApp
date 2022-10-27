@@ -10,10 +10,12 @@ import java.util.Date;
  *
  * @author kcsar
  */
+
 public class user {
     private String username;
     private String password;
     private String type;
+        
     
      public user(String username, String password, String type) {
         this.username = username;
@@ -44,7 +46,5 @@ public class user {
     public void setType(String type) {
         this.type = type;
     }
-
-
      
 }

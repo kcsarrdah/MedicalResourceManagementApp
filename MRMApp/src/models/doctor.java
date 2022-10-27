@@ -8,6 +8,20 @@ package models;
  *
  * @author kcsar
  */
-public class doctor {
+public class doctor extends person{
+    private String hospital; 
+
+    public doctor(String firstName, String lastName, int age, String gender) {
+        super(firstName, lastName, age, gender);
+        this.setHospital(hospital);
+    }
+
+    public String getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(String hospital) {
+        this.hospital = hospital;
+    }
     
 }
