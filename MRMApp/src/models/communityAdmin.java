@@ -8,6 +8,8 @@ package models;
  *
  * @author kcsar
  */
-public class communityAdmin{
-    
+public class communityAdmin extends person{
+    public communityAdmin(String firstName, String lastName, int age, String gender, String houseName, String communityName, int zip, String cityName) {
+        super(firstName, lastName, age, gender, houseName, communityName, zip, cityName);
+    }
 }

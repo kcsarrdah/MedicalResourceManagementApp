@@ -13,7 +13,7 @@ public class community extends city{
     private int zip;
     
 
-    community(String communityName, int zip, String cityName) {
+    public community(String communityName, int zip, String cityName) {
         super(cityName);
         this.setName(communityName);
         this.setZip(zip);

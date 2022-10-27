@@ -4,6 +4,7 @@
  */
 package views;
 
+import models.community;
 import mrmapp.LoginPage;
 
 /**
@@ -32,9 +33,9 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
-        cities = new javax.swing.JButton();
-        communities = new javax.swing.JButton();
-        hositals = new javax.swing.JButton();
+        btnCreateCities = new javax.swing.JButton();
+        btnCreateCommunities = new javax.swing.JButton();
+        btncreateHosp = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
         users = new javax.swing.JButton();
         btnCreateDoc = new javax.swing.JButton();
@@ -76,16 +77,26 @@ public class systemAdminDashboard extends javax.swing.JFrame {
 
         jLabel1.setText("Welcome Kind King");
 
-        cities.setText("cities");
-        cities.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateCities.setText("Create Cities");
+        btnCreateCities.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                citiesActionPerformed(evt);
+                btnCreateCitiesActionPerformed(evt);
             }
         });
 
-        communities.setText("Communities");
+        btnCreateCommunities.setText("Create Communities");
+        btnCreateCommunities.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateCommunitiesActionPerformed(evt);
+            }
+        });
 
-        hositals.setText("Hospitals");
+        btncreateHosp.setText("Hospitals");
+        btncreateHosp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncreateHospActionPerformed(evt);
+            }
+        });
 
         btnLogOut.setText("LogOut");
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -123,19 +134,19 @@ public class systemAdminDashboard extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(cities, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCreateCities, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(users, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(communities, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                    .addComponent(btnCreateCommunities, javax.swing.GroupLayout.PREFERRED_SIZE, 131, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hositals)
+                    .addComponent(btncreateHosp)
                     .addComponent(btnCreateDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cities, communities, hositals});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreateCities, btnCreateCommunities, btncreateHosp});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,9 +155,9 @@ public class systemAdminDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cities)
-                    .addComponent(communities)
-                    .addComponent(hositals))
+                    .addComponent(btnCreateCities)
+                    .addComponent(btnCreateCommunities)
+                    .addComponent(btncreateHosp))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(users)
@@ -166,9 +177,10 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         lp.show();
     }//GEN-LAST:event_btnLogOutActionPerformed
 
-    private void citiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citiesActionPerformed
+    private void btnCreateCitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCitiesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_citiesActionPerformed
+        
+    }//GEN-LAST:event_btnCreateCitiesActionPerformed
 
     private void usersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersActionPerformed
         // TODO add your handling code here:
@@ -180,6 +192,16 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         createDoc cd = new createDoc();
         cd.show();
     }//GEN-LAST:event_btnCreateDocActionPerformed
+
+    private void btnCreateCommunitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCommunitiesActionPerformed
+        // TODO add your handling code here:
+        createCommunity cn = new createCommunity();
+        cn.show();
+    }//GEN-LAST:event_btnCreateCommunitiesActionPerformed
+
+    private void btncreateHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncreateHospActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btncreateHospActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,11 +239,11 @@ public class systemAdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateCities;
+    private javax.swing.JButton btnCreateCommunities;
     private javax.swing.JButton btnCreateDoc;
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton cities;
-    private javax.swing.JButton communities;
-    private javax.swing.JButton hositals;
+    private javax.swing.JButton btncreateHosp;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JFrame jFrame1;

@@ -85,15 +85,15 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="cities" linkSize="1" min="-2" pref="150" max="-2" attributes="0"/>
+              <Component id="btnCreateCities" linkSize="1" min="-2" pref="150" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="users" max="32767" attributes="0"/>
-                  <Component id="communities" linkSize="1" pref="131" max="32767" attributes="0"/>
+                  <Component id="btnCreateCommunities" linkSize="1" pref="131" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="143" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="hositals" linkSize="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btncreateHosp" linkSize="1" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCreateDoc" min="-2" pref="136" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -107,9 +107,9 @@
               <Component id="jLabel1" min="-2" pref="54" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cities" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="communities" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="hositals" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCreateCities" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCreateCommunities" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btncreateHosp" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -129,23 +129,29 @@
         <Property name="text" type="java.lang.String" value="Welcome Kind King"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="cities">
+    <Component class="javax.swing.JButton" name="btnCreateCities">
       <Properties>
-        <Property name="text" type="java.lang.String" value="cities"/>
+        <Property name="text" type="java.lang.String" value="Create Cities"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="citiesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateCitiesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="communities">
+    <Component class="javax.swing.JButton" name="btnCreateCommunities">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Communities"/>
+        <Property name="text" type="java.lang.String" value="Create Communities"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateCommunitiesActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="hositals">
+    <Component class="javax.swing.JButton" name="btncreateHosp">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hospitals"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncreateHospActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogOut">
       <Properties>

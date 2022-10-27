@@ -16,9 +16,6 @@ public class hospital extends community{
         this.setHospitalName(hospitalName);
     }
 
-    
-
-
     public String getHospitalName() {
         return hospitalName;
     }
