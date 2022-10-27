@@ -74,7 +74,6 @@ public class createHospital extends javax.swing.JFrame {
             }
         });
 
-        jcCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcCommunity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcCommunityActionPerformed(evt);
@@ -147,8 +146,10 @@ public class createHospital extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        System.out.println(tfName.getText());
         hospital h = new hospital(tfName.getText(), jcCommunity.getSelectedItem().toString(),Integer.parseInt(tfZip.getText()), jcCity.getSelectedItem().toString());
         hospitals.put(h.getHospitalName(), h);
+        System.out.println(h.getHospitalName());
         this.hide();
         systemAdminDashboard sd = new systemAdminDashboard();
         sd.show();
@@ -156,7 +157,14 @@ public class createHospital extends javax.swing.JFrame {
 
     private void jcCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCityActionPerformed
         // TODO add your handling code here:
-        
+        jcCommunity.removeAllItems();
+        for (HashMap.Entry<String, community> set : communities.entrySet()) {
+            String cityName = set.getValue().getCityName();
+            if(jcCity.getSelectedItem().toString().equals(cityName)) {
+                jcCommunity.addItem(set.getValue().getName());
+            
+            }
+        }
     }//GEN-LAST:event_jcCityActionPerformed
 
     private void jcCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCommunityActionPerformed

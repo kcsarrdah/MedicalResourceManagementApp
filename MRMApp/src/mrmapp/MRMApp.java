@@ -34,9 +34,10 @@ public class MRMApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-            cities.add("pune");
-            cities.add("Boston");
+        // Hardcoding values for ease
+        cities.add("pune");
+        cities.add("Boston");
+        cities.add("Mumbai");
         
         user albert = new user("albert", "123456789", "doctor"); 
         user robin = new user("robin", "1234567890", "communityAdmin"); 
@@ -49,6 +50,17 @@ public class MRMApp {
         users.put(parvati.getUsername(), parvati);
         users.put(jagrawal.getUsername(), jagrawal);
         users.put(krishnna.getUsername(), krishnna);
+        
+        community MissionHill = new community("Mission Hill", 02120, "Boston");
+        community MarketYard = new community("Market Yard", 411037, "Pune");
+        community Roxbury = new community("Roxbury", 02121, "Boston");
+        
+        communities.put(MissionHill.getName(), MissionHill);
+        communities.put(MarketYard.getName(), MarketYard);
+        communities.put(Roxbury.getName(), Roxbury);
+        
+        
+        
         
         
         LoginPage lp = new LoginPage();
