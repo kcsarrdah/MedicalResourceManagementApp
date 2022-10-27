@@ -4,6 +4,8 @@
  */
 package models;
 
+import static mrmapp.MRMApp.cities;
+
 /**
  *
  * @author kcsar
@@ -15,11 +17,14 @@ public class city {
         this.cityName = cityName;
     }
 
-    public String getName() {
+    public String getCityName() {
         return cityName;
     }
 
-    public void setName(String name) {
+    public void setCityName(String name) {
         this.cityName = cityName;
+    }
+    public static void addCity(String city){
+        cities.add(city);
     }
 }

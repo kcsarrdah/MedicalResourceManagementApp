@@ -18,7 +18,6 @@ public class patient extends person{
         super(firstName, lastName, age, gender, houseName, communityName, zip, cityName);
         this.setUsername(username);
         this.setPassword(password);
-        
     }
 
     public String getUsername() {

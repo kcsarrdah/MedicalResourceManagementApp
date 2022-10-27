@@ -26,6 +26,7 @@ public class MRMApp {
     public static HashMap<String, community> communities = new HashMap<String, community>();
     public static HashMap<String, communityAdmin> communityAdmins = new HashMap<String, communityAdmin>();
     public static ArrayList<String> cities = new ArrayList<String>();
+   
     
 
     /**
@@ -34,7 +35,8 @@ public class MRMApp {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        
+            cities.add("pune");
+            cities.add("Boston");
         
         user albert = new user("albert", "123456789", "doctor"); 
         user robin = new user("robin", "1234567890", "communityAdmin"); 

@@ -84,16 +84,16 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="btnCreateCities" linkSize="1" min="-2" pref="150" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="users" max="32767" attributes="0"/>
-                  <Component id="btnCreateCommunities" linkSize="1" pref="131" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace pref="143" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="75" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btncreateHosp" linkSize="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCities" min="-2" pref="131" max="-2" attributes="0"/>
+                  <Component id="btnCommunities" min="-2" pref="152" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="155" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnHospital" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCreateDoc" min="-2" pref="136" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -107,13 +107,13 @@
               <Component id="jLabel1" min="-2" pref="54" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnCreateCities" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCreateCommunities" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btncreateHosp" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCommunities" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnHospital" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="users" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCities" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCreateDoc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="170" max="32767" attributes="0"/>
@@ -129,28 +129,20 @@
         <Property name="text" type="java.lang.String" value="Welcome Kind King"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCreateCities">
+    <Component class="javax.swing.JButton" name="btnCommunities">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Create Cities"/>
+        <Property name="text" type="java.lang.String" value="Communities"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateCitiesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCommunitiesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCreateCommunities">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Create Communities"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateCommunitiesActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btncreateHosp">
+    <Component class="javax.swing.JButton" name="btnHospital">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hospitals"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncreateHospActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogOut">
@@ -161,12 +153,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogOutActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="users">
+    <Component class="javax.swing.JButton" name="btnCities">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Users"/>
+        <Property name="text" type="java.lang.String" value="Cities"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usersActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCitiesActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCreateDoc">
@@ -176,6 +168,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateDocActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Users"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

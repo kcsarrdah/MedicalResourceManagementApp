@@ -5,6 +5,7 @@
 package views;
 
 import models.community;
+import static mrmapp.MRMApp.cities;
 import static mrmapp.MRMApp.communities;
 
 /**
@@ -35,8 +36,8 @@ public class createCommunity extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfCity = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jcCity = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +60,12 @@ public class createCommunity extends javax.swing.JFrame {
             }
         });
 
+        jcCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCityActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,7 +81,7 @@ public class createCommunity extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfZip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCity, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(225, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -97,7 +104,7 @@ public class createCommunity extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(tfCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(32, 32, 32))
@@ -108,14 +115,21 @@ public class createCommunity extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        community c = new community(tfName.getText(), Integer.parseInt(tfZip.getText()), tfCity.getText());
+        community c = new community(tfName.getText(), Integer.parseInt(tfZip.getText()),jcCity.getSelectedItem().toString());
         communities.put(c.getName(), c);
+        this.hide();
+        systemAdminDashboard sd = new systemAdminDashboard();
+        sd.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tfZipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfZipActionPerformed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_tfZipActionPerformed
+
+    private void jcCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcCityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,7 +172,7 @@ public class createCommunity extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField tfCity;
+    public javax.swing.JComboBox<String> jcCity;
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfZip;
     // End of variables declaration//GEN-END:variables

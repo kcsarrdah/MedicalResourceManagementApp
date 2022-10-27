@@ -83,7 +83,10 @@ public class createCity extends javax.swing.JFrame {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         city City = new city(tfName.getText());
-        cities.add(City.getName());
+        cities.add(City.getCityName());
+        this.hide();
+        systemAdminDashboard sd = new systemAdminDashboard();
+        sd.show();
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void tfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed

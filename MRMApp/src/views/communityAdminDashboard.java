@@ -72,6 +72,11 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         });
 
         jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         btnCreatePatient.setText("Create Patient");
         btnCreatePatient.addActionListener(new java.awt.event.ActionListener() {
@@ -143,17 +148,7 @@ public class communityAdminDashboard extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-                this.hide();
-        viewItemsPage view = new viewItemsPage();
-        view.tfHeader.setText("City");
-        String[] columnNames = {"Cities"};
-        String[][] rows = new String[cities.size()][1];
-        for(int i=0;i<cities.size();i++) {
-            rows[i][0] = cities.get(i);
-        }
-        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
-        view.jTable2.setModel(model);
-        view.show();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCreateDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDoctorActionPerformed
@@ -169,6 +164,10 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         createPatient cp = new createPatient();
         cp.show();
     }//GEN-LAST:event_btnCreatePatientActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

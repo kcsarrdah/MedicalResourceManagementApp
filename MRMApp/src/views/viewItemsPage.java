@@ -4,6 +4,11 @@
  */
 package views;
 
+import java.util.HashMap;
+import models.community;
+import static mrmapp.MRMApp.cities;
+import static mrmapp.MRMApp.communities;
+
 /**
  *
  * @author kcsar
@@ -32,8 +37,10 @@ public class viewItemsPage extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        tfHeader = new javax.swing.JLabel();
+        btnCreate = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jlHeading = new javax.swing.JLabel();
+        jlHeader = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,7 +65,7 @@ public class viewItemsPage extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "UserName", "First", "Title 3", "Title 4"
+                "", "", "", ""
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -67,15 +74,27 @@ public class viewItemsPage extends javax.swing.JFrame {
 
         jButton2.setText("Edit");
 
-        jButton3.setText("Create New");
+        btnCreate.setText("Create New");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
-        tfHeader.setText("Table");
+        jButton4.setText("Back");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jlHeader.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -84,29 +103,81 @@ public class viewItemsPage extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(tfHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(295, 295, 295)
+                        .addComponent(jlHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(tfHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlHeading))
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnCreate)
+                    .addComponent(jButton4))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+        if(jlHeader.getText() == "Cities"){
+        this.hide();
+        createCity ct = new createCity();
+        ct.show();
+        }
+        else if (jlHeader.getText() == "Hospitals"){
+        this.hide();
+        createHospital crh = new createHospital();
+        for(int i=0;i<cities.size();i++) {
+               crh.jcCity.addItem(cities.get(i));
+        }
+        crh.show();
+        }
+        else if(jlHeader.getText() == "Communities"){
+            this.hide();
+            createCommunity cc = new createCommunity();
+            for(int i=0;i<cities.size();i++) {
+              cc.jcCity.addItem(cities.get(i));
+        }
+            cc.show();
+        }
+        else if(jlHeader.getText() ==  "Hospitals"){
+            createHospital ch = new createHospital();
+        ch.jcCommunity.removeAllItems();
+        for (HashMap.Entry<String, community> set : communities.entrySet()) {
+            String cityName = set.getValue().getCityName();
+            if(ch.jcCity.getSelectedItem().toString().equals(cityName)) {
+                ch.jcCommunity.addItem(set.getValue().getName());
+            }
+        }
+        ch.show();
+        }
+
+        
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        systemAdminDashboard sd = new systemAdminDashboard();
+        sd.show();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,13 +215,15 @@ public class viewItemsPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnCreate;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     public javax.swing.JTable jTable2;
-    public javax.swing.JLabel tfHeader;
+    public javax.swing.JLabel jlHeader;
+    private javax.swing.JLabel jlHeading;
     // End of variables declaration//GEN-END:variables
 }

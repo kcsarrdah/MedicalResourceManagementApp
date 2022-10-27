@@ -4,8 +4,14 @@
  */
 package views;
 
+import java.util.HashMap;
+import javax.swing.table.DefaultTableModel;
 import models.community;
+import models.hospital;
 import mrmapp.LoginPage;
+import static mrmapp.MRMApp.cities;
+import static mrmapp.MRMApp.communities;
+import static mrmapp.MRMApp.hospitals;
 
 /**
  *
@@ -33,12 +39,12 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
-        btnCreateCities = new javax.swing.JButton();
-        btnCreateCommunities = new javax.swing.JButton();
-        btncreateHosp = new javax.swing.JButton();
+        btnCommunities = new javax.swing.JButton();
+        btnHospital = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
-        users = new javax.swing.JButton();
+        btnCities = new javax.swing.JButton();
         btnCreateDoc = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -77,24 +83,17 @@ public class systemAdminDashboard extends javax.swing.JFrame {
 
         jLabel1.setText("Welcome Kind King");
 
-        btnCreateCities.setText("Create Cities");
-        btnCreateCities.addActionListener(new java.awt.event.ActionListener() {
+        btnCommunities.setText("Communities");
+        btnCommunities.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateCitiesActionPerformed(evt);
+                btnCommunitiesActionPerformed(evt);
             }
         });
 
-        btnCreateCommunities.setText("Create Communities");
-        btnCreateCommunities.addActionListener(new java.awt.event.ActionListener() {
+        btnHospital.setText("Hospitals");
+        btnHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateCommunitiesActionPerformed(evt);
-            }
-        });
-
-        btncreateHosp.setText("Hospitals");
-        btncreateHosp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncreateHospActionPerformed(evt);
+                btnHospitalActionPerformed(evt);
             }
         });
 
@@ -105,10 +104,10 @@ public class systemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        users.setText("Users");
-        users.addActionListener(new java.awt.event.ActionListener() {
+        btnCities.setText("Cities");
+        btnCities.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usersActionPerformed(evt);
+                btnCitiesActionPerformed(evt);
             }
         });
 
@@ -118,6 +117,8 @@ public class systemAdminDashboard extends javax.swing.JFrame {
                 btnCreateDocActionPerformed(evt);
             }
         });
+
+        jButton1.setText("Users");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,21 +134,18 @@ public class systemAdminDashboard extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(btnCreateCities, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(users, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCreateCommunities, javax.swing.GroupLayout.PREFERRED_SIZE, 131, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btncreateHosp)
+                    .addComponent(btnCities, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCommunities, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHospital)
                     .addComponent(btnCreateDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreateCities, btnCreateCommunities, btncreateHosp});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -155,12 +153,12 @@ public class systemAdminDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreateCities)
-                    .addComponent(btnCreateCommunities)
-                    .addComponent(btncreateHosp))
+                    .addComponent(btnCommunities)
+                    .addComponent(btnHospital)
+                    .addComponent(jButton1))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(users)
+                    .addComponent(btnCities)
                     .addComponent(btnCreateDoc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(btnLogOut)
@@ -177,14 +175,20 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         lp.show();
     }//GEN-LAST:event_btnLogOutActionPerformed
 
-    private void btnCreateCitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCitiesActionPerformed
+    private void btnCitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitiesActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnCreateCitiesActionPerformed
-
-    private void usersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usersActionPerformed
+        this.hide();
+        viewItemsPage view = new viewItemsPage();
+        view.jlHeader.setText(btnCities.getText());
+        String[] columnNames = {"Cities"};
+        String[][] rows = new String[cities.size()][1];
+        for(int i=0;i<cities.size();i++) {
+            rows[i][0] = cities.get(i);
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable2.setModel(model);
+        view.show();
+    }//GEN-LAST:event_btnCitiesActionPerformed
 
     private void btnCreateDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDocActionPerformed
         // TODO add your handling code here:
@@ -193,15 +197,46 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         cd.show();
     }//GEN-LAST:event_btnCreateDocActionPerformed
 
-    private void btnCreateCommunitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCommunitiesActionPerformed
+    private void btnCommunitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommunitiesActionPerformed
         // TODO add your handling code here:
-        createCommunity cn = new createCommunity();
-        cn.show();
-    }//GEN-LAST:event_btnCreateCommunitiesActionPerformed
+//        createCommunity cn = new createCommunity();
+//        cn.show();
+        this.hide();
+        viewItemsPage view = new viewItemsPage();
+        view.jlHeader.setText(btnCommunities.getText());
+        String[] columnNames = {"City", "Community name"};
+        String[][] rows = new String[communities.size()][2];
+        int i = 0;
+        for(HashMap.Entry<String, community>set:communities.entrySet()){
+            rows[i][0] = set.getValue().getCityName();
+            rows[i][1] = set.getValue().getName();
+            i++;
+        }
+         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable2.setModel(model);
+        view.show();
+    }//GEN-LAST:event_btnCommunitiesActionPerformed
 
-    private void btncreateHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncreateHospActionPerformed
+    private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btncreateHospActionPerformed
+        this.hide();
+        viewItemsPage view = new viewItemsPage();
+        view.jlHeader.setText(btnHospital.getText());
+        String[] columnNames = {"HospitalName", "City", "Community name"};
+        String[][] rows = new String[hospitals.size()][3];
+        int i = 0;
+        for(HashMap.Entry<String, hospital>set:hospitals.entrySet()){
+            rows[i][0] = set.getValue().getHospitalName();
+            rows[i][1] = set.getValue().getCityName();
+            rows[i][2] = set.getValue().getName();
+            
+            i++;
+        }
+         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable2.setModel(model);
+        view.show();
+
+    }//GEN-LAST:event_btnHospitalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,15 +274,15 @@ public class systemAdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCreateCities;
-    private javax.swing.JButton btnCreateCommunities;
+    private javax.swing.JButton btnCities;
+    private javax.swing.JButton btnCommunities;
     private javax.swing.JButton btnCreateDoc;
+    private javax.swing.JButton btnHospital;
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btncreateHosp;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton users;
     // End of variables declaration//GEN-END:variables
 }
