@@ -9,6 +9,7 @@ import models.user;
 import java.util.HashMap;
 import models.city;
 import models.doctor;
+import models.hospital;
 import models.patient;
 
 /**
@@ -17,9 +18,10 @@ import models.patient;
  */
 public class MRMApp {
     static HashMap<String, user> users = new HashMap<String, user>();
-    static HashMap<String, city> cities = new HashMap<String, city>();
+    public static HashMap<String, city> cities = new HashMap<String, city>();
     static HashMap<String, doctor> doctors = new HashMap<String, doctor>();
     static HashMap<String, patient> patients = new HashMap<String, patient>();
+    static HashMap<String, hospital> hospitals = new HashMap<String, hospital>();
 
     /**
      * @param args the command line arguments
@@ -44,7 +46,6 @@ public class MRMApp {
         
         LoginPage lp = new LoginPage();
         lp.show();
-        
     }
     
 }

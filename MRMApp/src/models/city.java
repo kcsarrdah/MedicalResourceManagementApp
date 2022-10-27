@@ -11,6 +11,10 @@ package models;
 public class city {
     private String name;
 
+    public city(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

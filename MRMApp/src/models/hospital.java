@@ -8,33 +8,23 @@ package models;
  *
  * @author kcsar
  */
-public class hospital {
-    private String name;
-    private String community;
-    private String city;
+public class hospital extends community{
+    private String hospitalName;
 
-    public String getName() {
-        return name;
+    public hospital(String hospitalName, String communityName, int zip, String cityName) {
+        super(communityName, zip, cityName);
+        this.setHospitalName(hospitalName);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    
+
+
+    public String getHospitalName() {
+        return hospitalName;
     }
 
-    public String getCommunity() {
-        return community;
-    }
-
-    public void setCommunity(String community) {
-        this.community = community;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+    public void setHospitalName(String name) {
+        this.hospitalName = hospitalName;
     }
     
 }
