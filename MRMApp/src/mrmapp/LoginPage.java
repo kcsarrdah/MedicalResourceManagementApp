@@ -5,6 +5,7 @@
 package mrmapp;
 
 import javax.swing.JOptionPane;
+import static mrmapp.MRMApp.communityAdmins;
 import static mrmapp.MRMApp.users;
 import views.communityAdminDashboard;
 import views.doctorDashboard;
@@ -167,7 +168,8 @@ public class LoginPage extends javax.swing.JFrame {
               else if(users.get(userName).getType().equals("communityAdmin")){
                  this.hide();
                  communityAdminDashboard cd = new communityAdminDashboard();
-                 this.show();
+                 cd.getComm(communityAdmins.get(userName).getName(),communityAdmins.get(userName).getCityName());
+                 cd.show();
              }
         }
         else{

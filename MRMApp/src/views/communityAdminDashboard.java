@@ -4,10 +4,16 @@
  */
 package views;
 
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.hospital;
+import models.house;
 import mrmapp.LoginPage;
+import mrmapp.MRMApp;
 import static mrmapp.MRMApp.cities;
+import static mrmapp.MRMApp.hospitals;
+import static mrmapp.MRMApp.houses;
 
 /**
  *
@@ -20,6 +26,16 @@ public class communityAdminDashboard extends javax.swing.JFrame {
      */
     public communityAdminDashboard() {
         initComponents();
+         if(MRMApp.commName.length() > 0) {
+            jLabel1.setText(MRMApp.commName);
+         }
+
+    }
+    
+    public void getComm(String communityName, String cityName){ 
+        jLabel1.setText(communityName);
+        MRMApp.commName = communityName;
+        MRMApp.cityName = cityName;
     }
 
     /**
@@ -33,15 +49,12 @@ public class communityAdminDashboard extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        btnCity = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        btnCreateDoctor = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        btnCreatePatient = new javax.swing.JButton();
+        btnHouse = new javax.swing.JButton();
+        btnHospital = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Welccome Communtiy Admin");
+        jLabel1.setText("Community");
 
         jButton1.setText("logOut");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -50,38 +63,17 @@ public class communityAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        btnCity.setText("Cities");
-        btnCity.addActionListener(new java.awt.event.ActionListener() {
+        btnHouse.setText("House");
+        btnHouse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCityActionPerformed(evt);
+                btnHouseActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Communities");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnHospital.setText("Hospitals");
+        btnHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        btnCreateDoctor.setText("Create Doctor");
-        btnCreateDoctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateDoctorActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("jButton4");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        btnCreatePatient.setText("Create Patient");
-        btnCreatePatient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreatePatientActionPerformed(evt);
+                btnHospitalActionPerformed(evt);
             }
         });
 
@@ -92,40 +84,26 @@ public class communityAdminDashboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCreateDoctor))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnCity)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnCreatePatient))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(132, 132, 132)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addGap(22, 22, 22)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCity)
-                    .addComponent(jButton2)
-                    .addComponent(btnCreatePatient))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(btnCreateDoctor))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addComponent(btnHouse)
+                .addGap(39, 39, 39)
+                .addComponent(btnHospital)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
@@ -141,33 +119,42 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         lp.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCityActionPerformed
+    private void btnHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHouseActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnCityActionPerformed
+        viewCommunityAdmin view = new viewCommunityAdmin();
+        view.jLabel1.setText(btnHouse.getText());
+        String[] columnNames = {"Houses", "Zip Code"};
+        String[][] rows = new String[houses.size()][1];
+        int i=0;
+        for (HashMap.Entry<String, house> set : houses.entrySet()) {
+            if(set.getValue().getName().equals(jLabel1.getText())) {
+                rows[i][0] = set.getValue().getHouseName();
+                i++;
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable1.setModel(model);
+        view.show();
+    }//GEN-LAST:event_btnHouseActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void btnCreateDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDoctorActionPerformed
-        // TODO add your handling code here:
-        this.hide();
-        createDoc cd = new createDoc();
-        cd.show();
-    }//GEN-LAST:event_btnCreateDoctorActionPerformed
-
-    private void btnCreatePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePatientActionPerformed
-        // TODO add your handling code here:
-        this.hide();
-        createPatient cp = new createPatient();
-        cp.show();
-    }//GEN-LAST:event_btnCreatePatientActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        viewCommunityAdmin view = new viewCommunityAdmin();
+        view.jLabel1.setText(btnHospital.getText());
+        String[] columnNames = {"HospitalName", "City", "Community Name"};
+        String[][] rows = new String[hospitals.size()][3];
+        int i = 0;
+        for(HashMap.Entry<String, hospital>set:hospitals.entrySet()){
+            rows[i][0] = set.getValue().getHospitalName();
+            rows[i][1] = set.getValue().getCityName();
+            rows[i][2] = set.getValue().getName();
+            
+            i++;
+        }
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable1.setModel(model);
+        view.show();
+    }//GEN-LAST:event_btnHospitalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,12 +192,9 @@ public class communityAdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnCity;
-    private javax.swing.JButton btnCreateDoctor;
-    private javax.swing.JButton btnCreatePatient;
+    private javax.swing.JButton btnHospital;
+    private javax.swing.JButton btnHouse;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

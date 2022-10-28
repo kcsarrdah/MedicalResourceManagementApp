@@ -12,6 +12,7 @@ import models.community;
 import models.communityAdmin;
 import models.doctor;
 import models.hospital;
+import models.house;
 import models.patient;
 
 /**
@@ -26,7 +27,11 @@ public class MRMApp {
     public static HashMap<String, hospital> hospitals = new HashMap<String, hospital>();
     public static HashMap<String, community> communities = new HashMap<String, community>();
     public static HashMap<String, communityAdmin> communityAdmins = new HashMap<String, communityAdmin>();
+    public static HashMap<String, house> houses = new HashMap<String, house>();
     public static ArrayList<String> cities = new ArrayList<String>();
+    
+    public static String cityName = "";
+    public static String commName = "";
     
    
     
@@ -83,7 +88,10 @@ public class MRMApp {
         hospitals.put(c.getHospitalName(), c);
         hospitals.put(d.getHospitalName(), d);
         
-        
+        communityAdmin ca = new communityAdmin("robin", "robin", "Male", "MissionHill", 02120,"Boston");
+        communityAdmin ca2 = new communityAdmin("Ram", "Ram", "Male", "Market Yard", 411037,"Pune");
+        communityAdmins.put(ca.getUsername(), ca);
+        communityAdmins.put(ca2.getUsername(), ca2);
         
         
         LoginPage lp = new LoginPage();

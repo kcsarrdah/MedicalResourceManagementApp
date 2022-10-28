@@ -16,8 +16,6 @@ public class doctor extends person{
         this.setHospitalName(hospitalName);
     }
 
-
-
     public String getHospitalName(){
         return hospitalName;
     }
