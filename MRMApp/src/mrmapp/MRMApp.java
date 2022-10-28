@@ -21,7 +21,6 @@ import models.patient;
  */
 public class MRMApp {
     public static HashMap<String, user> users = new HashMap<String, user>();
-    public static HashMap<String, communityAdmin> CommunityAdmins = new HashMap<String, communityAdmin>();
     public static HashMap<String, doctor> doctors = new HashMap<String, doctor>();
     public static HashMap<String, patient> patients = new HashMap<String, patient>();
     public static HashMap<String, hospital> hospitals = new HashMap<String, hospital>();
