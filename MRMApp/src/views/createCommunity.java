@@ -122,14 +122,13 @@ public class createCommunity extends javax.swing.JFrame {
         sd.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tfZipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfZipActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_tfZipActionPerformed
-
     private void jcCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcCityActionPerformed
+
+    private void tfZipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfZipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfZipActionPerformed
 
     /**
      * @param args the command line arguments

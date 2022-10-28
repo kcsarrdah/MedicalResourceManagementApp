@@ -189,6 +189,14 @@ public class viewItemsPage extends javax.swing.JFrame {
             }
             doc.show();
         }
+        else if(jlHeader.getText() == "Community Admin"){
+            this.hide();
+            createCommunityAdmin ca = new createCommunityAdmin();
+            for(int i=0;i<cities.size();i++) {
+                ca.jcCity.addItem(cities.get(i));
+            }
+            ca.show();
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

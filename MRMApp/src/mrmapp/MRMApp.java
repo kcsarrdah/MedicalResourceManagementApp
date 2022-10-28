@@ -20,6 +20,7 @@ import models.patient;
  */
 public class MRMApp {
     public static HashMap<String, user> users = new HashMap<String, user>();
+    public static HashMap<String, communityAdmin> CommunityAdmins = new HashMap<String, communityAdmin>();
     public static HashMap<String, doctor> doctors = new HashMap<String, doctor>();
     public static HashMap<String, patient> patients = new HashMap<String, patient>();
     public static HashMap<String, hospital> hospitals = new HashMap<String, hospital>();
@@ -74,7 +75,7 @@ public class MRMApp {
         hospital a = new hospital("a", "Market Yard", 411037, "pune");
         hospital b = new hospital("b", "Roxbury", 02120, "Boston");
         hospital c = new hospital("c", "Mission Hill", 02120, "Boston");
-        hospital d = new hospital("d", "", 411037, "pune");
+        hospital d = new hospital("d", "Panvel", 411037, "Mumbai");
         
         
         hospitals.put(a.getHospitalName(), a);

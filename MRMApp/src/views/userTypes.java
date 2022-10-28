@@ -6,8 +6,10 @@ package views;
 
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
+import models.communityAdmin;
 import models.doctor;
 import models.patient;
+import static mrmapp.MRMApp.communityAdmins;
 import static mrmapp.MRMApp.doctors;
 import static mrmapp.MRMApp.hospitals;
 import static mrmapp.MRMApp.patients;
@@ -56,6 +58,11 @@ public class userTypes extends javax.swing.JFrame {
         });
 
         btnCommAdmin.setText("Community Admin");
+        btnCommAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCommAdminActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +153,26 @@ public class userTypes extends javax.swing.JFrame {
         view.jTable2.setModel(model);
         view.show();
     }//GEN-LAST:event_btnDoctorActionPerformed
+
+    private void btnCommAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommAdminActionPerformed
+        // TODO add your handling code here:
+        viewItemsPage view = new viewItemsPage();
+        view.jlHeader.setText("Community Admin");
+        String[] columnNames = {"Name", "Community", "City"};
+        String[][] rows = new String[doctors.size()][3];
+
+        int i = 0;
+        for (HashMap.Entry<String, communityAdmin> set : communityAdmins.entrySet()) {
+            rows[i][0] = set.getValue().getAdminName();
+            rows[i][1] = set.getValue().getName();
+            rows[i][1] = set.getValue().getCityName();            
+            i++;
+        }
+
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable2.setModel(model);
+        view.show();
+    }//GEN-LAST:event_btnCommAdminActionPerformed
 
     /**
      * @param args the command line arguments
