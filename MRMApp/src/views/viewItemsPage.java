@@ -181,7 +181,14 @@ public class viewItemsPage extends javax.swing.JFrame {
         cp.show();
         }
 
-        
+        else if(jlHeader.getText() == "Doctors"){
+            this.hide();
+            createDoc doc = new createDoc();
+            for(int i=0;i<cities.size();i++) {
+                doc.jcCity.addItem(cities.get(i));
+            }
+            doc.show();
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

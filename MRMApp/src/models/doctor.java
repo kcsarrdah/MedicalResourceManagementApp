@@ -23,7 +23,7 @@ public class doctor extends person{
     }
 
     public void setHospitalName(String hospital) {
-        this.hospitalName = hospitalName;
+        this.hospitalName = hospital;
     }
     
 }

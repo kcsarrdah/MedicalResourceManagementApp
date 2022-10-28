@@ -4,8 +4,13 @@
  */
 package views;
 
+import java.util.HashMap;
+import models.community;
 import models.doctor;
+import models.hospital;
+import static mrmapp.MRMApp.communities;
 import static mrmapp.MRMApp.doctors;
+import static mrmapp.MRMApp.hospitals;
 
 /**
  *
@@ -96,7 +101,11 @@ public class createDoc extends javax.swing.JFrame {
 
         jLabel14.setText("Community");
 
-        jcCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcCommunity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCommunityActionPerformed(evt);
+            }
+        });
 
         jcHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +114,11 @@ public class createDoc extends javax.swing.JFrame {
             }
         });
 
-        jcCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCityActionPerformed(evt);
+            }
+        });
 
         pfPassword.setText("jPasswordField1");
 
@@ -115,7 +128,7 @@ public class createDoc extends javax.swing.JFrame {
             }
         });
 
-        jcGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
 
         jLabel4.setText("Doctor");
 
@@ -295,6 +308,30 @@ public class createDoc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfHouseNameActionPerformed
 
+    private void jcCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCityActionPerformed
+        // TODO add your handling code here:
+        jcCommunity.removeAllItems();
+        for (HashMap.Entry<String, community> set : communities.entrySet()) {
+            String cityName = set.getValue().getCityName();
+            if(jcCity.getSelectedItem().toString().equals(cityName)) {
+                jcCommunity.addItem(set.getValue().getName());
+            }
+        }
+    }//GEN-LAST:event_jcCityActionPerformed
+
+    private void jcCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCommunityActionPerformed
+        // TODO add your handling code here:
+        jcHospital.removeAllItems();
+        if(jcCommunity.getSelectedItem() != null) {
+            for (HashMap.Entry<String, hospital> set : hospitals.entrySet()) {
+                String comName = set.getValue().getName();
+                if(jcCommunity.getSelectedItem().toString().equals(comName)) {
+                    jcHospital.addItem(set.getValue().getHospitalName());
+                }
+            }
+        }
+    }//GEN-LAST:event_jcCommunityActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -349,8 +386,8 @@ public class createDoc extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JComboBox<String> jcCity;
-    private javax.swing.JComboBox<String> jcCommunity;
+    public javax.swing.JComboBox<String> jcCity;
+    public javax.swing.JComboBox<String> jcCommunity;
     private javax.swing.JComboBox<String> jcGender;
     private javax.swing.JComboBox<String> jcHospital;
     private javax.swing.JPasswordField pfPassword;

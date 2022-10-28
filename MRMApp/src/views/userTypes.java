@@ -6,7 +6,10 @@ package views;
 
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
+import models.doctor;
 import models.patient;
+import static mrmapp.MRMApp.doctors;
+import static mrmapp.MRMApp.hospitals;
 import static mrmapp.MRMApp.patients;
 
 /**
@@ -34,6 +37,7 @@ public class userTypes extends javax.swing.JFrame {
         btnPatient = new javax.swing.JButton();
         btnDoctor = new javax.swing.JButton();
         btnCommAdmin = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,20 +49,37 @@ public class userTypes extends javax.swing.JFrame {
         });
 
         btnDoctor.setText("Doctor");
+        btnDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoctorActionPerformed(evt);
+            }
+        });
 
         btnCommAdmin.setText("Community Admin");
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnCommAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnCommAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -69,7 +90,9 @@ public class userTypes extends javax.swing.JFrame {
                     .addComponent(btnPatient)
                     .addComponent(btnDoctor)
                     .addComponent(btnCommAdmin))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
@@ -92,6 +115,37 @@ public class userTypes extends javax.swing.JFrame {
         view.jTable2.setModel(model);
         view.show();
     }//GEN-LAST:event_btnPatientActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        systemAdminDashboard sd = new systemAdminDashboard();
+        sd.show();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
+        // TODO add your handling code here:
+        viewItemsPage view = new viewItemsPage();
+        view.jlHeader.setText("Doctors");
+        String[] columnNames = {"Name", "Hospital Name", "Community", "City"};
+        String[][] rows = new String[doctors.size()][4];
+
+        int i = 0;
+        for (HashMap.Entry<String, doctor> set : doctors.entrySet()) {
+            rows[i][0] = set.getValue().getFirstName();
+            rows[i][1] = set.getValue().getHospitalName();
+            System.out.println(set.getValue().getHospitalName());
+            rows[i][2] = set.getValue().getCityName();
+            rows[i][3] = set.getValue().getName();
+            
+            i++;
+        }
+
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        view.jTable2.setModel(model);
+        view.show();
+    }//GEN-LAST:event_btnDoctorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,5 +186,6 @@ public class userTypes extends javax.swing.JFrame {
     private javax.swing.JButton btnCommAdmin;
     private javax.swing.JButton btnDoctor;
     private javax.swing.JButton btnPatient;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

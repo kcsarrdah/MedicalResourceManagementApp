@@ -26,6 +26,7 @@ public class MRMApp {
     public static HashMap<String, community> communities = new HashMap<String, community>();
     public static HashMap<String, communityAdmin> communityAdmins = new HashMap<String, communityAdmin>();
     public static ArrayList<String> cities = new ArrayList<String>();
+    
    
     
 
@@ -52,13 +53,34 @@ public class MRMApp {
         users.put(krishnna.getUsername(), krishnna);
         
         community MissionHill = new community("Mission Hill", 02120, "Boston");
-        community MarketYard = new community("Market Yard", 411037, "Pune");
+        community MarketYard = new community("Market Yard", 411037, "pune");
         community Roxbury = new community("Roxbury", 02121, "Boston");
+        community Panvel = new community("Panvel", 411050, "Mumbai");
         
         communities.put(MissionHill.getName(), MissionHill);
         communities.put(MarketYard.getName(), MarketYard);
         communities.put(Roxbury.getName(), Roxbury);
+        communities.put(Panvel.getName(), Panvel);
         
+        
+        doctor rick = new doctor("hospitalA", "Richard", "Bu", 28, "male", "houseA", "Roxbury", 02120, "Boston");
+        doctor mike = new doctor("hospitalB", "Michael", "Wu", 38, "male", "houseB", "MissionHill", 02120, "Boston");
+        doctor archie = new doctor("hospitalc", "archie", "andrews", 42, "male", "houseC", "MarketYard", 411037, "Pune");
+        
+        doctors.put(rick.getFirstName(), rick);
+        doctors.put(mike.getFirstName(), mike);
+        doctors.put(archie.getFirstName(), archie);
+        
+        hospital a = new hospital("a", "Market Yard", 411037, "pune");
+        hospital b = new hospital("b", "Roxbury", 02120, "Boston");
+        hospital c = new hospital("c", "Mission Hill", 02120, "Boston");
+        hospital d = new hospital("d", "", 411037, "pune");
+        
+        
+        hospitals.put(a.getHospitalName(), a);
+        hospitals.put(b.getHospitalName(), b);
+        hospitals.put(c.getHospitalName(), c);
+        hospitals.put(d.getHospitalName(), d);
         
         
         
