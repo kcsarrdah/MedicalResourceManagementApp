@@ -4,7 +4,11 @@
  */
 package views;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
 import mrmapp.LoginPage;
+import static mrmapp.MRMApp.encounters;
 
 /**
  *
@@ -46,6 +50,11 @@ public class doctorDashboard extends javax.swing.JFrame {
         });
 
         jButton2.setText("Encounters");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Patients");
 
@@ -102,6 +111,22 @@ public class doctorDashboard extends javax.swing.JFrame {
         LoginPage lp = new LoginPage();
         lp.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        viewFormDoctors vd = new viewFormDoctors();
+        vd.jLabel1.setText("Encounters");
+        
+        DefaultTableModel model = (DefaultTableModel) vd.jTable1.getModel();
+        for(int i=0;i<encounters.size();i++){
+            Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+            String s = formatter.format(encounters.get(i).getDate());
+            String data[] = {Integer.toString(encounters.get(i).getPatientID()), encounters.get(i).getPatientName(), s, Float.toString(encounters.get(i).getBloodPressure()), Float.toString(encounters.get(i).getHeartRate()), Float.toString(encounters.get(i).getTemperature())};
+            model.addRow(data);
+        }
+        vd.jTable1.setModel(model);
+        vd.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

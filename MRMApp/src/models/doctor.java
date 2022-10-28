@@ -10,10 +10,19 @@ package models;
  */
 public class doctor extends person{
     private String hospitalName; 
+    private int doctorID;
 
-    public doctor(String hospitalName, String firstName, String lastName, int age, String gender, String houseName, String communityName, int zip, String cityName) {
+    public doctor(int doctorID, String hospitalName, String firstName, String lastName, int age, String gender, String houseName, String communityName, int zip, String cityName) {
         super(firstName, lastName, age, gender, houseName, communityName, zip, cityName);
         this.setHospitalName(hospitalName);
+    }
+
+    public int getDoctorID() {
+        return doctorID;
+    }
+
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
     }
 
     public String getHospitalName(){

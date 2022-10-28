@@ -13,11 +13,20 @@ public class patient extends person{
     private String username;
     private String password;
     private String hospitalName;
+    private int PatientId;
     
-    public patient(String username, String password, String hospitalName, String firstName, String lastName, int age, String gender, String houseName, String communityName, int zip, String cityName) {
+    public patient(int patientId, String username, String password, String hospitalName, String firstName, String lastName, int age, String gender, String houseName, String communityName, int zip, String cityName) {
         super(firstName, lastName, age, gender, houseName, communityName, zip, cityName);
         this.setUsername(username);
         this.setPassword(password);
+    }
+
+    public int getPatientId() {
+        return PatientId;
+    }
+
+    public void setPatientId(int PatientId) {
+        this.PatientId = PatientId;
     }
 
     public String getUsername() {

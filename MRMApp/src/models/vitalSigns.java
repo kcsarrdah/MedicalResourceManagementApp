@@ -12,7 +12,7 @@ public class vitalSigns {
     private float bloodPressure;
     private float heartRate;
     private float temperature;
-    
+
     public vitalSigns(float bloodPressure, float heartRate, float temperature) {
         this.bloodPressure = bloodPressure;
         this.heartRate = heartRate;
@@ -33,6 +33,13 @@ public class vitalSigns {
 
     public void setHeartRate(float heartRate) {
         this.heartRate = heartRate;
+    }
+        public float getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
     }
     
 }

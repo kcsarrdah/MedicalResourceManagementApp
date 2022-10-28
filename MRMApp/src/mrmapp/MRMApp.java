@@ -11,6 +11,7 @@ import models.city;
 import models.community;
 import models.communityAdmin;
 import models.doctor;
+import models.encounter;
 import models.hospital;
 import models.house;
 import models.patient;
@@ -28,6 +29,7 @@ public class MRMApp {
     public static HashMap<String, communityAdmin> communityAdmins = new HashMap<String, communityAdmin>();
     public static HashMap<String, house> houses = new HashMap<String, house>();
     public static ArrayList<String> cities = new ArrayList<String>();
+    public static ArrayList<encounter> encounters = new ArrayList<encounter>();
     
     public static String cityName = "";
     public static String commName = "";
@@ -68,9 +70,9 @@ public class MRMApp {
         communities.put(Panvel.getName(), Panvel);
         
         
-        doctor rick = new doctor("hospitalA", "Richard", "Bu", 28, "male", "houseA", "Roxbury", 02120, "Boston");
-        doctor mike = new doctor("hospitalB", "Michael", "Wu", 38, "male", "houseB", "MissionHill", 02120, "Boston");
-        doctor archie = new doctor("hospitalc", "archie", "andrews", 42, "male", "houseC", "MarketYard", 411037, "Pune");
+        doctor rick = new doctor(1000, "hospitalA", "Richard", "Bu", 28, "male", "houseA", "Roxbury", 02120, "Boston");
+        doctor mike = new doctor(1001,"hospitalB", "Michael", "Wu", 38, "male", "houseB", "MissionHill", 02120, "Boston");
+        doctor archie = new doctor(1002, "hospitalc", "archie", "andrews", 42, "male", "houseC", "MarketYard", 411037, "Pune");
         
         doctors.put(rick.getFirstName(), rick);
         doctors.put(mike.getFirstName(), mike);

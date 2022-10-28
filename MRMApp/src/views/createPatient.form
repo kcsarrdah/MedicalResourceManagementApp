@@ -80,15 +80,24 @@
                           <Group type="102" attributes="0">
                               <EmptySpace pref="26" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel5" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jcGender" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfZipCode" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
-                                  <Component id="tfAddress" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel5" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="jLabel7" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                          <Component id="jLabel8" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jcGender" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfZipCode" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                          <Component id="tfAddress" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel13" min="-2" pref="56" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="tfPatientID" min="-2" pref="74" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
@@ -156,7 +165,14 @@
                       </Group>
                       <EmptySpace pref="23" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfPatientID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -340,6 +356,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfHouseName">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Patient Id"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPatientID">
     </Component>
   </SubComponents>
 </Form>
