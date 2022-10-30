@@ -160,7 +160,7 @@ public class LoginPage extends javax.swing.JFrame {
                  patientDashboard pd = new patientDashboard();
                  pd.show();
              }
-              else if(users.get(userName).getType().equals("doctor")){
+              else if(users.get(userName).getType().equals("Doctor")){
                  this.hide();
                  doctorDashboard dd = new doctorDashboard();
                  dd.show();

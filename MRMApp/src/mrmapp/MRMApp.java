@@ -49,7 +49,7 @@ public class MRMApp {
         
         user albert = new user("albert", "123456789", "doctor"); 
         user robin = new user("robin", "1234567890", "communityAdmin"); 
-        user parvati = new user("parvati", "123456789012", "patient");
+        user parvati = new user("parvati", "123456789012", "Doctor");
         user jagrawal = new user("jagrawal", "whydoiexist", "person");
         user krishnna = new user("krishnna", "password", "systemAdmin");
         
@@ -72,11 +72,11 @@ public class MRMApp {
         
         doctor rick = new doctor(1000, "hospitalA", "Richard", "Bu", 28, "male", "houseA", "Roxbury", 02120, "Boston");
         doctor mike = new doctor(1001,"hospitalB", "Michael", "Wu", 38, "male", "houseB", "MissionHill", 02120, "Boston");
-        doctor archie = new doctor(1002, "hospitalc", "archie", "andrews", 42, "male", "houseC", "MarketYard", 411037, "Pune");
+        doctor par = new doctor(1002, "hospitalc", "parvati", "saraswati", 42, "female", "houseC", "MarketYard", 411037, "Pune");
         
         doctors.put(rick.getFirstName(), rick);
         doctors.put(mike.getFirstName(), mike);
-        doctors.put(archie.getFirstName(), archie);
+        doctors.put(par.getFirstName(), par);
         
         hospital a = new hospital("a", "Market Yard", 411037, "pune");
         hospital b = new hospital("b", "Roxbury", 02120, "Boston");

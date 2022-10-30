@@ -124,11 +124,13 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         viewCommunityAdmin view = new viewCommunityAdmin();
         view.jLabel1.setText(btnHouse.getText());
         String[] columnNames = {"Houses", "Zip Code"};
-        String[][] rows = new String[houses.size()][1];
+        String[][] rows = new String[houses.size()][2];
         int i=0;
         for (HashMap.Entry<String, house> set : houses.entrySet()) {
             if(set.getValue().getName().equals(jLabel1.getText())) {
                 rows[i][0] = set.getValue().getHouseName();
+                int a = set.getValue().getZip();
+                rows[i][1] = Integer.toString(a);
                 i++;
             }
         }
@@ -148,7 +150,6 @@ public class communityAdminDashboard extends javax.swing.JFrame {
             rows[i][0] = set.getValue().getHospitalName();
             rows[i][1] = set.getValue().getCityName();
             rows[i][2] = set.getValue().getName();
-            
             i++;
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);

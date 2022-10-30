@@ -73,6 +73,11 @@ public class viewItemsPage extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Edit");
 
@@ -160,17 +165,17 @@ public class viewItemsPage extends javax.swing.JFrame {
         }
             cc.show();
         }
-        else if(jlHeader.getText() ==  "Hospitals"){
-            createHospital ch = new createHospital();
-        ch.jcCommunity.removeAllItems();
-        for (HashMap.Entry<String, community> set : communities.entrySet()) {
-            String cityName = set.getValue().getCityName();
-            if(ch.jcCity.getSelectedItem().toString().equals(cityName)) {
-                ch.jcCommunity.addItem(set.getValue().getName());
-            }
-        }
-        ch.show();
-        }
+//        else if(jlHeader.getText() ==  "Hospitals"){
+//            createHospital ch = new createHospital();
+//        ch.jcCommunity.removeAllItems();
+//        for (HashMap.Entry<String, community> set : communities.entrySet()) {
+//            String cityName = set.getValue().getCityName();
+//            if(ch.jcCity.getSelectedItem().toString().equals(cityName)) {
+//                ch.jcCommunity.addItem(set.getValue().getName());
+//            }
+//        }
+//        ch.show();
+//        }
         else if(jlHeader.getText() == "Patients"){
             this.hide();
             createPatient cp = new createPatient();
@@ -205,6 +210,10 @@ public class viewItemsPage extends javax.swing.JFrame {
         systemAdminDashboard sd = new systemAdminDashboard();
         sd.show();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
