@@ -35,10 +35,7 @@ public class viewFormDoctors extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Patient ID", "Name", "Blood Pressure", "Heart Rate", "Temperature"
