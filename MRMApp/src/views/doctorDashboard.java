@@ -8,6 +8,9 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 import mrmapp.LoginPage;
+import mrmapp.MRMApp;
+import static mrmapp.MRMApp.docName;
+import static mrmapp.MRMApp.docUserName;
 import static mrmapp.MRMApp.doctors;
 import static mrmapp.MRMApp.encounters;
 
@@ -23,6 +26,11 @@ public class doctorDashboard extends javax.swing.JFrame {
     public doctorDashboard() {
         initComponents();
     }
+        public void getDocName(String DocUserName, String DocName){ 
+        jLabel1.setText(docName);
+        MRMApp.docUserName = DocUserName;
+        MRMApp.docName = DocName;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +44,7 @@ public class doctorDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jlHospital = new javax.swing.JLabel();
+        jlDrName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,7 +64,7 @@ public class doctorDashboard extends javax.swing.JFrame {
             }
         });
 
-        jlHospital.setText("jLabel2");
+        jlDrName.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,9 +72,6 @@ public class doctorDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,7 +80,10 @@ public class doctorDashboard extends javax.swing.JFrame {
                                 .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlDrName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(217, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -84,7 +92,7 @@ public class doctorDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlDrName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
@@ -158,6 +166,6 @@ public class doctorDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jlHospital;
+    public javax.swing.JLabel jlDrName;
     // End of variables declaration//GEN-END:variables
 }

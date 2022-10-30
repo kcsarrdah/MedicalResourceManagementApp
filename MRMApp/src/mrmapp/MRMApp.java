@@ -33,6 +33,8 @@ public class MRMApp {
     
     public static String cityName = "";
     public static String commName = "";
+    public static String docUserName = "";
+    public static String docName = "";
     
    
     
@@ -70,13 +72,13 @@ public class MRMApp {
         communities.put(Panvel.getName(), Panvel);
         
         
-        doctor rick = new doctor(1000, "hospitalA", "Richard", "Bu", 28, "male", "houseA", "Roxbury", 02120, "Boston");
-        doctor mike = new doctor(1001,"hospitalB", "Michael", "Wu", 38, "male", "houseB", "MissionHill", 02120, "Boston");
-        doctor par = new doctor(1002, "hospitalc", "parvati", "saraswati", 42, "female", "houseC", "MarketYard", 411037, "Pune");
+        doctor rick = new doctor("Richard",1000, "a", "Richard", "Bu", 28, "male", "houseA", "Roxbury", 02120, "Boston");
+        doctor mike = new doctor("Michael",1001,"b", "Michael", "Wu", 38, "male", "houseB", "MissionHill", 02120, "Boston");
+        doctor par = new doctor("parvai",1002, "c", "parvati", "saraswati", 42, "female", "houseC", "MarketYard", 411037, "Pune");
         
-        doctors.put(rick.getFirstName(), rick);
-        doctors.put(mike.getFirstName(), mike);
-        doctors.put(par.getFirstName(), par);
+        doctors.put(rick.getUserName(), rick);
+        doctors.put(mike.getUserName(), mike);
+        doctors.put(par.getUserName(), par);
         
         hospital a = new hospital("a", "Market Yard", 411037, "pune");
         hospital b = new hospital("b", "Roxbury", 02120, "Boston");
