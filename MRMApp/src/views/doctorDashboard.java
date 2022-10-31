@@ -45,6 +45,7 @@ public class doctorDashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jlDrName = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +67,13 @@ public class doctorDashboard extends javax.swing.JFrame {
 
         jlDrName.setText("jLabel2");
 
+        jButton3.setText("Create Encounter");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,12 +86,15 @@ public class doctorDashboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton1)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jlDrName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +104,9 @@ public class doctorDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlDrName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
@@ -113,18 +126,31 @@ public class doctorDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         viewFormDoctors vd = new viewFormDoctors();
         vd.jLabel1.setText("Encounters");
-        
-        
+        System.out.println(docUserName);
+        System.out.println(doctors.get(docUserName));
+        int id = doctors.get(docUserName).getDoctorID();
+        System.out.println(id);
+
         DefaultTableModel model = (DefaultTableModel) vd.jTable1.getModel();
-        for(int i=0;i < encounters.size();i++){
-            Format formatter = new SimpleDateFormat("MM/dd/yyyy");
-            String s = formatter.format(encounters.get(i).getDate());
-            String data[] = {Integer.toString(encounters.get(i).getPatientID()), encounters.get(i).getPatientName(), s, Float.toString(encounters.get(i).getBloodPressure()), Float.toString(encounters.get(i).getHeartRate()), Float.toString(encounters.get(i).getTemperature())};
-            model.addRow(data);
+            for(int i=0;i<encounters.size();i++){
+            if(encounters.get(i).getDoctorID() == id) {
+                Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+                String s = formatter.format(encounters.get(i).getDate());
+                String data[] = {Integer.toString(encounters.get(i).getPatientID()), encounters.get(i).getPatientName(), s, Float.toString(encounters.get(i).getBloodPressure()), Float.toString(encounters.get(i).getHeartRate()), Float.toString(encounters.get(i).getTemperature())};
+                model.addRow(data);
+            }
         }
         vd.jTable1.setModel(model);
         vd.show();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        createEncounter ce = new createEncounter();
+        ce.show();
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,6 +190,7 @@ public class doctorDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jlDrName;
     // End of variables declaration//GEN-END:variables

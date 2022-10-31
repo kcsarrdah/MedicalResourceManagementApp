@@ -135,16 +135,17 @@ public class userTypes extends javax.swing.JFrame {
         // TODO add your handling code here:
         viewItemsPage view = new viewItemsPage();
         view.jlHeader.setText("Doctors");
-        String[] columnNames = {"Name", "Hospital Name", "Community", "City"};
-        String[][] rows = new String[doctors.size()][4];
+        String[] columnNames = {"Doctor ID", "Name", "Hospital Name", "Community", "City"};
+        String[][] rows = new String[doctors.size()][5];
 
         int i = 0;
         for (HashMap.Entry<String, doctor> set : doctors.entrySet()) {
-            rows[i][0] = set.getValue().getFirstName();
-            rows[i][1] = set.getValue().getHospitalName();
+            rows[i][0] = Integer.toString(set.getValue().getDoctorID());
+            rows[i][1] = set.getValue().getFirstName();
+            rows[i][2] = set.getValue().getHospitalName();
             System.out.println(set.getValue().getHospitalName());
-            rows[i][2] = set.getValue().getCityName();
-            rows[i][3] = set.getValue().getName();
+            rows[i][3] = set.getValue().getCityName();
+            rows[i][4] = set.getValue().getName();
             
             i++;
         }

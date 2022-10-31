@@ -217,6 +217,7 @@ public class createEncounter extends javax.swing.JFrame {
         // TODO add your handling code here:
         encounter en = new encounter(tfName.getText(), tfDrName.getText(), jDateChooser.getDate(), Integer.parseInt(tfPatientId.getText()),Integer.parseInt(tfDrID.getText()), Float.parseFloat(tfBP.getText()), Float.parseFloat(tfBP.getText()), Float.parseFloat(tfTemp.getText()));
         encounters.add(en);
+        System.out.println(en.getDate());
         String usrnme = tfDrUsername.getText();
         System.out.println(usrnme);
         this.hide();

@@ -5,10 +5,15 @@
 package views;
 
 import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import models.community;
+import models.doctor;
 import models.patient;
 import static mrmapp.MRMApp.cities;
 import static mrmapp.MRMApp.communities;
+import static mrmapp.MRMApp.doctors;
+import static mrmapp.MRMApp.hospitals;
 import static mrmapp.MRMApp.patients;
 
 /**
@@ -165,17 +170,17 @@ public class viewItemsPage extends javax.swing.JFrame {
         }
             cc.show();
         }
-//        else if(jlHeader.getText() ==  "Hospitals"){
-//            createHospital ch = new createHospital();
-//        ch.jcCommunity.removeAllItems();
-//        for (HashMap.Entry<String, community> set : communities.entrySet()) {
-//            String cityName = set.getValue().getCityName();
-//            if(ch.jcCity.getSelectedItem().toString().equals(cityName)) {
-//                ch.jcCommunity.addItem(set.getValue().getName());
-//            }
-//        }
-//        ch.show();
-//        }
+        else if(jlHeader.getText() ==  "Hospitals"){
+            createHospital ch = new createHospital();
+        ch.jcCommunity.removeAllItems();
+        for (HashMap.Entry<String, community> set : communities.entrySet()) {
+            String cityName = set.getValue().getCityName();
+            if(ch.jcCity.getSelectedItem().toString().equals(cityName)) {
+                ch.jcCommunity.addItem(set.getValue().getName());
+            }
+        }
+        ch.show();
+        }
         else if(jlHeader.getText() == "Patients"){
             this.hide();
             createPatient cp = new createPatient();
@@ -213,6 +218,45 @@ public class viewItemsPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        if(jTable2.getSelectedRowCount() == 1) {
+            if(jlHeader.getText() == "Doctors") {
+                int id = Integer.parseInt(tableModel.getValueAt(jTable2.getSelectedRow(), 0).toString());
+                for (HashMap.Entry<String, doctor> set : doctors.entrySet()) {
+                    if(set.getValue().getDoctorID() == id) {
+                        doctors.remove(set.getKey());
+                        tableModel.removeRow(jTable2.getSelectedRow());
+                    }
+                }
+            } 
+            else if(jlHeader.getText() == "Patients") {
+                int id = Integer.parseInt(tableModel.getValueAt(jTable2.getSelectedRow(), 0).toString());
+                for (HashMap.Entry<String, patient> set : patients.entrySet()) {
+                    if(set.getValue().getPatientId()== id) {
+                        patients.remove(set.getKey());
+                        tableModel.removeRow(jTable2.getSelectedRow());
+                    }
+                }
+            }
+            else if(jlHeader.getText() == "Hospitals") {
+                String name = tableModel.getValueAt(jTable2.getSelectedRow(), 0).toString();
+                hospitals.remove(name);
+                tableModel.removeRow(jTable2.getSelectedRow());
+                for (HashMap.Entry<String, doctor> set1 : doctors.entrySet()) {
+                    if(set1.getValue().getHospitalName()== name) {
+                        doctors.remove(set1.getKey());
+                    }
+                }
+            }
+        }
+        else {
+            if(jTable1.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "The table is empty or select a row.");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Select one row at a time.");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

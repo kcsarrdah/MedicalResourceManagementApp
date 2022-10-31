@@ -125,7 +125,7 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         view.jLabel1.setText(btnHouse.getText());
         String[] columnNames = {"Houses", "Zip Code"};
         String[][] rows = new String[houses.size()][2];
-        int i=0;
+        int i = 0;
         for (HashMap.Entry<String, house> set : houses.entrySet()) {
             if(set.getValue().getName().equals(jLabel1.getText())) {
                 rows[i][0] = set.getValue().getHouseName();

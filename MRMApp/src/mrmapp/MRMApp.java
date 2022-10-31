@@ -74,7 +74,7 @@ public class MRMApp {
         
         doctor rick = new doctor("Richard",1000, "a", "Richard", "Bu", 28, "male", "houseA", "Roxbury", 02120, "Boston");
         doctor mike = new doctor("Michael",1001,"b", "Michael", "Wu", 38, "male", "houseB", "MissionHill", 02120, "Boston");
-        doctor par = new doctor("parvai",1002, "c", "parvati", "saraswati", 42, "female", "houseC", "MarketYard", 411037, "Pune");
+        doctor par = new doctor("parvati",1002, "c", "parvati", "saraswati", 42, "female", "houseC", "MarketYard", 411037, "Pune");
         
         doctors.put(rick.getUserName(), rick);
         doctors.put(mike.getUserName(), mike);
@@ -95,6 +95,8 @@ public class MRMApp {
         communityAdmin ca2 = new communityAdmin("Ram", "Ram", "Male", "Market Yard", 411037,"Pune");
         communityAdmins.put(ca.getUsername(), ca);
         communityAdmins.put(ca2.getUsername(), ca2);
+        
+        //encounter e1 = new encounter("shreya", "parvati", 'Sun Jan 01 00:00:00 PKT 2017', 10011, 1002, 24, 39.46, 100);
         
         
         LoginPage lp = new LoginPage();
