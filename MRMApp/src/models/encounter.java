@@ -16,14 +16,17 @@ public class encounter extends vitalSigns{
     private Date date;
     private int patientID;
     private int doctorID;
+    private String hospitalName;
 
-    public encounter(String patientName, String doctorName, Date date, int patientID, int doctorID, float bloodPressure, float heartRate, float temperature) {
+
+    public encounter(String patientName, String doctorName,String hospitalName, Date date, int patientID, int doctorID, float bloodPressure, float heartRate, float temperature) {
         super(bloodPressure, heartRate, temperature);
         this.setPatientName(patientName);
         this.setDoctorName(doctorName);
         this.setDate(date);
         this.setPatientID(patientID);
         this.setDoctorID(doctorID);
+        this.setHospitalName(hospitalName);
     }
 
 
@@ -66,5 +69,12 @@ public class encounter extends vitalSigns{
 
     public void setDoctorID(int doctorID) {
         this.doctorID = doctorID;
+    }
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
     }
 }

@@ -120,6 +120,7 @@ public class userTypes extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable2.setModel(model);
+        view.btnCreate.setVisible(false);
         view.show();
     }//GEN-LAST:event_btnPatientActionPerformed
 
@@ -172,6 +173,7 @@ public class userTypes extends javax.swing.JFrame {
 
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable2.setModel(model);
+        view.btnDelete.setVisible(false);
         view.show();
     }//GEN-LAST:event_btnCommAdminActionPerformed
 

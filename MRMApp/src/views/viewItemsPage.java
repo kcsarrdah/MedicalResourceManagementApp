@@ -4,6 +4,8 @@
  */
 package views;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +16,7 @@ import static mrmapp.MRMApp.cities;
 import static mrmapp.MRMApp.communities;
 import static mrmapp.MRMApp.doctors;
 import static mrmapp.MRMApp.hospitals;
+import static mrmapp.MRMApp.patUserName;
 import static mrmapp.MRMApp.patients;
 
 /**
@@ -42,8 +45,8 @@ public class viewItemsPage extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jlHeading = new javax.swing.JLabel();
@@ -77,14 +80,19 @@ public class viewItemsPage extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jButton1.setText("Delete");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Edit");
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnCreate.setText("Create New");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -111,9 +119,9 @@ public class viewItemsPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
@@ -137,8 +145,8 @@ public class viewItemsPage extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(btnDelete)
+                    .addComponent(btnEdit)
                     .addComponent(btnCreate)
                     .addComponent(jButton4))
                 .addContainerGap())
@@ -216,7 +224,7 @@ public class viewItemsPage extends javax.swing.JFrame {
         sd.show();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
         if(jTable2.getSelectedRowCount() == 1) {
@@ -232,7 +240,7 @@ public class viewItemsPage extends javax.swing.JFrame {
             else if(jlHeader.getText() == "Patients") {
                 int id = Integer.parseInt(tableModel.getValueAt(jTable2.getSelectedRow(), 0).toString());
                 for (HashMap.Entry<String, patient> set : patients.entrySet()) {
-                    if(set.getValue().getPatientId()== id) {
+                    if(set.getValue().getPatientId()== id){
                         patients.remove(set.getKey());
                         tableModel.removeRow(jTable2.getSelectedRow());
                     }
@@ -243,7 +251,7 @@ public class viewItemsPage extends javax.swing.JFrame {
                 hospitals.remove(name);
                 tableModel.removeRow(jTable2.getSelectedRow());
                 for (HashMap.Entry<String, doctor> set1 : doctors.entrySet()) {
-                    if(set1.getValue().getHospitalName()== name) {
+                    if(set1.getValue().getHospitalName().equals(name)) {
                         doctors.remove(set1.getKey());
                     }
                 }
@@ -257,12 +265,66 @@ public class viewItemsPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Select one row at a time.");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        if(jlHeader.getText().equals("Patients")){
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
+        
+        if(jTable2.getSelectedRowCount() == 1){
+            createPatient cp = new createPatient();
+            cp.show();
+            cp.tfFirstName.setText(patients.get(patUserName).getFirstName());
+            cp.tfUserName.setText(patients.get(patUserName).getUsername());
+            cp.tfAge.setText(Integer.toString(patients.get(patUserName).getAge()));
+//          cd.jcGender.setSelectedItem(doctors.get(id).getGender());
+            cp.tfLastName.setText(patients.get(patUserName).getLastName());
+            cp.tfHouseName.setText(patients.get(patUserName).getHouseName());
+            cp.tfDrID.setText(Integer.toString(id));
+            cp.tfZipCode.setText(Integer.toString(patients.get(patUserName).getZip()));
+        }
+            
+        }
+        
+        else if(jlHeader.getText().equals("Doctors")){
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
+        
+        if(jTable2.getSelectedRowCount() == 1){
+            createDoc cd = new createDoc();
+            cd.show();
+            cd.tfName.setText(doctors.get(id).getFirstName());
+            cd.tfUserName.setText(doctors.get(id).getUserName());
+            cd.tfAge.setText(Integer.toString(doctors.get(id).getAge()));
+//          cd.jcGender.setSelectedItem(doctors.get(id).getGender());
+            cd.tfLastname.setText(doctors.get(id).getLastName());
+            cd.tfHouseName.setText(doctors.get(id).getHouseName());
+            cd.tfDocID.setText(Integer.toString(id));
+            cd.tfZipCode.setText(Integer.toString(doctors.get(id).getZip()));
+            cd.show();
+        }
+        }
+            
+        
+        if(jlHeader.getText().equals("Hospital")){
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
+        
+        if(jTable2.getSelectedRowCount() == 1){
+            createHospital ch = new createHospital();
+            ch.show();
+            ch.tfName.setText(hospitals.get(id).getHospitalName());
+            ch.tfZip.setText(Integer.toString(hospitals.get(id).getZip()));
+        }
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+        public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -296,8 +358,8 @@ public class viewItemsPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCreate;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

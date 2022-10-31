@@ -4,7 +4,16 @@
  */
 package views;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
+import models.encounter;
 import mrmapp.LoginPage;
+import mrmapp.MRMApp;
+import static mrmapp.MRMApp.docName;
+import static mrmapp.MRMApp.encounters;
+import static mrmapp.MRMApp.patUserName;
+import static mrmapp.MRMApp.patients;
 
 /**
  *
@@ -18,7 +27,10 @@ public class patientDashboard extends javax.swing.JFrame {
     public patientDashboard() {
         initComponents();
     }
-
+    public void getPatName(String patUserName){ 
+        jLabel1.setText(docName);
+        MRMApp.patUserName = patUserName;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +42,9 @@ public class patientDashboard extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnViewEncounter = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,12 +57,16 @@ public class patientDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Encounters History");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnViewEncounter.setText("Encounters History");
+        btnViewEncounter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnViewEncounterActionPerformed(evt);
             }
         });
+
+        jButton3.setText("View Profile");
+
+        jButton4.setText("Book Appointment");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,8 +80,13 @@ public class patientDashboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))))
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnViewEncounter)
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton4)
+                                    .addComponent(jButton3))))))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,8 +95,12 @@ public class patientDashboard extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnViewEncounter)
+                    .addComponent(jButton3))
+                .addGap(28, 28, 28)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(19, 19, 19))
         );
@@ -88,10 +115,23 @@ public class patientDashboard extends javax.swing.JFrame {
         lp.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnViewEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEncounterActionPerformed
         // TODO add your handling code here:
+        viewFormPatient vp = new viewFormPatient();
+        int id = patients.get(patUserName).getPatientId();
+        System.out.println("id = " + id);
+        DefaultTableModel model = (DefaultTableModel) vp.jTable1.getModel();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+        for(int i=0;i<encounters.size();i++){
+            if(encounters.get(i).getPatientID() == id) {
+                Format formatter = new SimpleDateFormat("MM/dd/yyyy");
+                String s = formatter.format(encounters.get(i).getDate());
+                String data[] = {encounters.get(i).getDoctorName(), encounters.get(i).getHospitalName(), s, Float.toString(encounters.get(i).getBloodPressure()), Float.toString(encounters.get(i).getHeartRate()), Float.toString(encounters.get(i).getTemperature())};
+                model.addRow(data);
+            }
+        }
+        vp.show();
+    }//GEN-LAST:event_btnViewEncounterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,8 +169,10 @@ public class patientDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnViewEncounter;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

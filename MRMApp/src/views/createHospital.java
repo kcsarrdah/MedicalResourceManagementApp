@@ -42,6 +42,8 @@ public class createHospital extends javax.swing.JFrame {
         tfZip = new javax.swing.JTextField();
         jcCity = new javax.swing.JComboBox<>();
         jcCommunity = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        tfHospitalID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +82,8 @@ public class createHospital extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("Hospital ID ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,14 +106,19 @@ public class createHospital extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jcCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(67, 67, 67)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfZip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jcCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfZip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -124,7 +133,9 @@ public class createHospital extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -147,8 +158,8 @@ public class createHospital extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         System.out.println(tfName.getText());
-        hospital h = new hospital(tfName.getText(), jcCommunity.getSelectedItem().toString(),Integer.parseInt(tfZip.getText()), jcCity.getSelectedItem().toString());
-        hospitals.put(h.getHospitalName(), h);
+        hospital h = new hospital(Integer.parseInt(tfHospitalID.getText()), tfName.getText(), jcCommunity.getSelectedItem().toString(),Integer.parseInt(tfZip.getText()), jcCity.getSelectedItem().toString());
+        hospitals.put(h.getHospitalID(), h);
         System.out.println(h.getHospitalName());
         this.hide();
         systemAdminDashboard sd = new systemAdminDashboard();
@@ -160,6 +171,7 @@ public class createHospital extends javax.swing.JFrame {
         jcCommunity.removeAllItems();
         for (HashMap.Entry<String, community> set : communities.entrySet()) {
             String cityName = set.getValue().getCityName();
+            
             if(jcCity.getSelectedItem().toString().equals(cityName)) {
                 jcCommunity.addItem(set.getValue().getName());
             
@@ -214,9 +226,11 @@ public class createHospital extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     public javax.swing.JComboBox<String> jcCity;
     public javax.swing.JComboBox<String> jcCommunity;
-    private javax.swing.JTextField tfName;
-    private javax.swing.JTextField tfZip;
+    public javax.swing.JTextField tfHospitalID;
+    public javax.swing.JTextField tfName;
+    public javax.swing.JTextField tfZip;
     // End of variables declaration//GEN-END:variables
 }

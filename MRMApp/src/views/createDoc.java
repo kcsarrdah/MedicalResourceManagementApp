@@ -8,9 +8,11 @@ import java.util.HashMap;
 import models.community;
 import models.doctor;
 import models.hospital;
+import models.user;
 import static mrmapp.MRMApp.communities;
 import static mrmapp.MRMApp.doctors;
 import static mrmapp.MRMApp.hospitals;
+import static mrmapp.MRMApp.users;
 
 /**
  *
@@ -42,7 +44,6 @@ public class createDoc extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -55,10 +56,8 @@ public class createDoc extends javax.swing.JFrame {
         pfPassword = new javax.swing.JPasswordField();
         tfUserName = new javax.swing.JTextField();
         tfAge = new javax.swing.JTextField();
-        tfAddress = new javax.swing.JTextField();
         tfZipCode = new javax.swing.JTextField();
         jcGender = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         tfLastname = new javax.swing.JTextField();
@@ -66,7 +65,6 @@ public class createDoc extends javax.swing.JFrame {
         tfHouseName = new javax.swing.JTextField();
         tfDocID = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        tfUsername = new javax.swing.JTextField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -89,8 +87,6 @@ public class createDoc extends javax.swing.JFrame {
         });
 
         jLabel3.setText("UserName");
-
-        jLabel5.setText("Address");
 
         jLabel6.setText("City");
 
@@ -133,8 +129,6 @@ public class createDoc extends javax.swing.JFrame {
 
         jcGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
 
-        jLabel4.setText("username");
-
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,20 +168,14 @@ public class createDoc extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tfAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -195,7 +183,6 @@ public class createDoc extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfDocID, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,11 +213,7 @@ public class createDoc extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,9 +230,7 @@ public class createDoc extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -292,6 +273,8 @@ public class createDoc extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        user user = new user(tfUserName.getText(), pfPassword.getText(), "Doctor");
+        users.put(user.getUsername(), user);
         doctor dr = new doctor(tfUserName.getText(),Integer.parseInt(tfDocID.getText()),jcHospital.getSelectedItem().toString(),
                                tfName.getText(),
                                tfLastname.getText(),
@@ -303,7 +286,7 @@ public class createDoc extends javax.swing.JFrame {
                 jcCity.getSelectedItem().toString());
         
         
-        doctors.put(dr.getFirstName(), dr);
+        doctors.put(dr.getUserName(), dr);
         this.hide();
         systemAdminDashboard sd = new systemAdminDashboard();
         sd.show();
@@ -333,10 +316,11 @@ public class createDoc extends javax.swing.JFrame {
     }//GEN-LAST:event_jcCityActionPerformed
 
     private void jcCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCommunityActionPerformed
+
         // TODO add your handling code here:
         jcHospital.removeAllItems();
         if(jcCommunity.getSelectedItem() != null) {
-            for (HashMap.Entry<String, hospital> set : hospitals.entrySet()) {
+            for (HashMap.Entry<Integer, hospital> set : hospitals.entrySet()) {
                 String comName = set.getValue().getName();
                 if(jcCommunity.getSelectedItem().toString().equals(comName)) {
                     jcHospital.addItem(set.getValue().getHospitalName());
@@ -390,8 +374,6 @@ public class createDoc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -402,17 +384,15 @@ public class createDoc extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     public javax.swing.JComboBox<String> jcCity;
     public javax.swing.JComboBox<String> jcCommunity;
-    private javax.swing.JComboBox<String> jcGender;
+    public javax.swing.JComboBox<String> jcGender;
     private javax.swing.JComboBox<String> jcHospital;
-    private javax.swing.JPasswordField pfPassword;
-    private javax.swing.JTextField tfAddress;
-    private javax.swing.JTextField tfAge;
-    private javax.swing.JTextField tfDocID;
-    private javax.swing.JTextField tfHouseName;
-    private javax.swing.JTextField tfLastname;
-    private javax.swing.JTextField tfName;
-    private javax.swing.JTextField tfUserName;
-    private javax.swing.JTextField tfUsername;
-    private javax.swing.JTextField tfZipCode;
+    public javax.swing.JPasswordField pfPassword;
+    public javax.swing.JTextField tfAge;
+    public javax.swing.JTextField tfDocID;
+    public javax.swing.JTextField tfHouseName;
+    public javax.swing.JTextField tfLastname;
+    public javax.swing.JTextField tfName;
+    public javax.swing.JTextField tfUserName;
+    public javax.swing.JTextField tfZipCode;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,10 +10,13 @@ package models;
  */
 public class hospital extends community{
     private String hospitalName;
+    private int hospitalID;
 
-    public hospital(String hospitalName, String communityName, int zip, String cityName) {
+
+    public hospital(int hospitalID, String hospitalName, String communityName, int zip, String cityName) {
         super(communityName, zip, cityName);
         this.setHospitalName(hospitalName);
+        this.setHospitalID(hospitalID);
     }
 
     public String getHospitalName() {
@@ -22,6 +25,14 @@ public class hospital extends community{
 
     public void setHospitalName(String name) {
         this.hospitalName = name;
+    }
+    
+    public int getHospitalID() {
+        return hospitalID;
+    }
+
+    public void setHospitalID(int hospitalID) {
+        this.hospitalID = hospitalID;
     }
     
 }

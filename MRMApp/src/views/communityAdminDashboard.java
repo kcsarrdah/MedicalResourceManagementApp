@@ -143,13 +143,14 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         viewCommunityAdmin view = new viewCommunityAdmin();
         view.jLabel1.setText(btnHospital.getText());
-        String[] columnNames = {"HospitalName", "City", "Community Name"};
+        String[] columnNames = {"Hospital ID", "HospitalName", "City", "Community Name"};
         String[][] rows = new String[hospitals.size()][3];
         int i = 0;
-        for(HashMap.Entry<String, hospital>set:hospitals.entrySet()){
-            rows[i][0] = set.getValue().getHospitalName();
-            rows[i][1] = set.getValue().getCityName();
-            rows[i][2] = set.getValue().getName();
+        for(HashMap.Entry<Integer, hospital>set:hospitals.entrySet()){
+            rows[i][0] = Integer.toString(set.getValue().getHospitalID());
+            rows[i][1] = set.getValue().getHospitalName();
+            rows[i][2] = set.getValue().getCityName();
+            rows[i][3] = set.getValue().getName();
             i++;
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);

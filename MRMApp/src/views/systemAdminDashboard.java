@@ -179,6 +179,7 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable2.setModel(model);
+        view.btnDelete.setVisible(false);
         view.show();
     }//GEN-LAST:event_btnCitiesActionPerformed
 
@@ -197,8 +198,9 @@ public class systemAdminDashboard extends javax.swing.JFrame {
             rows[i][1] = set.getValue().getName();
             i++;
         }
-         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
+        DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable2.setModel(model);
+        view.btnDelete.setVisible(false);
         view.show();
     }//GEN-LAST:event_btnCommunitiesActionPerformed
 
@@ -207,13 +209,14 @@ public class systemAdminDashboard extends javax.swing.JFrame {
         this.hide();
         viewItemsPage view = new viewItemsPage();
         view.jlHeader.setText(btnHospital.getText());
-        String[] columnNames = {"HospitalName", "City", "Community Name"};
-        String[][] rows = new String[hospitals.size()][3];
+        String[] columnNames = {"Hospital ID", "HospitalName", "City", "Community Name"};
+        String[][] rows = new String[hospitals.size()][4];
         int i = 0;
-        for(HashMap.Entry<String, hospital>set:hospitals.entrySet()){
-            rows[i][0] = set.getValue().getHospitalName();
-            rows[i][1] = set.getValue().getCityName();
-            rows[i][2] = set.getValue().getName();
+        for(HashMap.Entry<Integer, hospital>set:hospitals.entrySet()){
+            rows[i][0] = Integer.toString(set.getValue().getHospitalID());
+            rows[i][1] = set.getValue().getHospitalName();
+            rows[i][2] = set.getValue().getCityName();
+            rows[i][3] = set.getValue().getName();
             
             i++;
         }

@@ -24,7 +24,7 @@ public class MRMApp {
     public static HashMap<String, user> users = new HashMap<String, user>();
     public static HashMap<String, doctor> doctors = new HashMap<String, doctor>();
     public static HashMap<String, patient> patients = new HashMap<String, patient>();
-    public static HashMap<String, hospital> hospitals = new HashMap<String, hospital>();
+    public static HashMap<Integer, hospital> hospitals = new HashMap<Integer, hospital>();
     public static HashMap<String, community> communities = new HashMap<String, community>();
     public static HashMap<String, communityAdmin> communityAdmins = new HashMap<String, communityAdmin>();
     public static HashMap<String, house> houses = new HashMap<String, house>();
@@ -35,8 +35,8 @@ public class MRMApp {
     public static String commName = "";
     public static String docUserName = "";
     public static String docName = "";
+    public static String patUserName = "";
     
-   
     
 
     /**
@@ -49,17 +49,23 @@ public class MRMApp {
         cities.add("Boston");
         cities.add("Mumbai");
         
-        user albert = new user("albert", "123456789", "doctor"); 
+        user albert = new user("albert", "123456789", "Doctor"); 
         user robin = new user("robin", "1234567890", "communityAdmin"); 
         user parvati = new user("parvati", "123456789012", "Doctor");
-        user jagrawal = new user("jagrawal", "whydoiexist", "person");
+        user jagrawal = new user("jagrawal", "whydoiexist", "Patient");
         user krishnna = new user("krishnna", "password", "systemAdmin");
+        user anannyaa = new user("anannya", "123", "Patient"); 
+        user adityaa = new user("aditya", "124", "Patient"); 
+        user Sankalp = new user("twofaced", "125", "Patient"); 
         
         users.put(albert.getUsername(), albert);
         users.put(robin.getUsername(), robin);
         users.put(parvati.getUsername(), parvati);
         users.put(jagrawal.getUsername(), jagrawal);
         users.put(krishnna.getUsername(), krishnna);
+        users.put(anannyaa.getUsername(), anannyaa);
+        users.put(adityaa.getUsername(), adityaa);
+        users.put(Sankalp.getUsername(), Sankalp);
         
         community MissionHill = new community("Mission Hill", 02120, "Boston");
         community MarketYard = new community("Market Yard", 411037, "pune");
@@ -80,24 +86,33 @@ public class MRMApp {
         doctors.put(mike.getUserName(), mike);
         doctors.put(par.getUserName(), par);
         
-        hospital a = new hospital("a", "Market Yard", 411037, "pune");
-        hospital b = new hospital("b", "Roxbury", 02120, "Boston");
-        hospital c = new hospital("c", "Mission Hill", 02120, "Boston");
-        hospital d = new hospital("d", "Panvel", 411037, "Mumbai");
+        hospital a = new hospital(123, "a", "Market Yard", 411037, "pune");
+        hospital b = new hospital(124, "b", "Roxbury", 02120, "Boston");
+        hospital c = new hospital(1234, "c", "Mission Hill", 02120, "Boston");
+        hospital d = new hospital(234, "d", "Panvel", 411037, "Mumbai");
         
         
-        hospitals.put(a.getHospitalName(), a);
-        hospitals.put(b.getHospitalName(), b);
-        hospitals.put(c.getHospitalName(), c);
-        hospitals.put(d.getHospitalName(), d);
+        hospitals.put(a.getHospitalID(), a);
+        hospitals.put(b.getHospitalID(), b);
+        hospitals.put(c.getHospitalID(), c);
+        hospitals.put(d.getHospitalID(), d);
         
         communityAdmin ca = new communityAdmin("robin", "robin", "Male", "MissionHill", 02120,"Boston");
         communityAdmin ca2 = new communityAdmin("Ram", "Ram", "Male", "Market Yard", 411037,"Pune");
         communityAdmins.put(ca.getUsername(), ca);
         communityAdmins.put(ca2.getUsername(), ca2);
         
-        //encounter e1 = new encounter("shreya", "parvati", 'Sun Jan 01 00:00:00 PKT 2017', 10011, 1002, 24, 39.46, 100);
         
+        patient anannya = new patient(100, "anannya", "123", "a", "Anannya", "Sethiya", 22, "female", "house", "Roxbury", 02120, "Boston");
+        patient aditya = new patient(101, "aditya", "124", "b", "Aditya", "Khaire", 22, "male", "houseB", "Panvel", 411037, "Mumbai");
+        patient pandey = new patient(102, "twofaced", "125", "c", "Sankalp", "Pandey", 22, "male", "hosueC", "Market Yard", 411037, "pune");
+        
+        patients.put(anannya.getUsername(), anannya);
+        patients.put(aditya.getUsername(), aditya);
+        patients.put(pandey.getUsername(), pandey);
+        
+        
+        System.out.println("here");
         
         LoginPage lp = new LoginPage();
         lp.show();

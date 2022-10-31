@@ -127,9 +127,7 @@ public class doctorDashboard extends javax.swing.JFrame {
         viewFormDoctors vd = new viewFormDoctors();
         vd.jLabel1.setText("Encounters");
         System.out.println(docUserName);
-        System.out.println(doctors.get(docUserName));
         int id = doctors.get(docUserName).getDoctorID();
-        System.out.println(id);
 
         DefaultTableModel model = (DefaultTableModel) vd.jTable1.getModel();
             for(int i=0;i<encounters.size();i++){
@@ -146,8 +144,14 @@ public class doctorDashboard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        this.hide();
         createEncounter ce = new createEncounter();
+        ce.tfDrName.setText(docName);
+        int id = doctors.get(docUserName).getDoctorID();
+        System.out.println(id);
+        System.out.println(docName);
+        System.out.println(docUserName);
+        ce.tfDrID.setText(Integer.toString(doctors.get(docUserName).getDoctorID()));
+        ce.tfDrUsername.setText(docUserName);
         ce.show();
         
     }//GEN-LAST:event_jButton3ActionPerformed

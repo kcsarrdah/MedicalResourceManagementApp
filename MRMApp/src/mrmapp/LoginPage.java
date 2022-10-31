@@ -5,6 +5,7 @@
 package mrmapp;
 
 import javax.swing.JOptionPane;
+import static mrmapp.MRMApp.cities;
 import static mrmapp.MRMApp.communityAdmins;
 import static mrmapp.MRMApp.doctors;
 import static mrmapp.MRMApp.users;
@@ -162,7 +163,8 @@ public class LoginPage extends javax.swing.JFrame {
         
         String userName = textField.getText();
         String password = passwordField.getText();
-       
+        
+        
         if(users.containsKey(userName) && users.get(userName).getPassword().equals(password)){
             JOptionPane.showMessageDialog(this, "Login Successful");
             
@@ -171,9 +173,10 @@ public class LoginPage extends javax.swing.JFrame {
                 systemAdminDashboard sd = new systemAdminDashboard();
                 sd.show();
             }
-             else if(users.get(userName).getType().equals("patient")){
+             else if(users.get(userName).getType().equals("Patient")){
                  this.hide();
                  patientDashboard pd = new patientDashboard();
+                 pd.getPatName(userName);
                  pd.show();
              }
               else if(users.get(userName).getType().equals("Doctor")){
@@ -200,6 +203,10 @@ public class LoginPage extends javax.swing.JFrame {
     private void btnRegisterPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterPActionPerformed
         // TODO add your handling code here:
         createPatient cp = new createPatient();
+        cp.jcCity.removeAll();
+            for(int i=0;i<cities.size();i++) {
+                cp.jcCity.addItem(cities.get(i));
+            }
         cp.show();
     }//GEN-LAST:event_btnRegisterPActionPerformed
 
