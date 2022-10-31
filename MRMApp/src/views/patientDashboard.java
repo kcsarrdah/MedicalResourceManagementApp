@@ -28,7 +28,7 @@ public class patientDashboard extends javax.swing.JFrame {
         initComponents();
     }
     public void getPatName(String patUserName){ 
-        jLabel1.setText(docName);
+        jLabel1.setText(patUserName);
         MRMApp.patUserName = patUserName;
     }
     /**

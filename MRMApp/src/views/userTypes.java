@@ -109,13 +109,14 @@ public class userTypes extends javax.swing.JFrame {
         // TODO add your handling code here:
         viewItemsPage view = new viewItemsPage();
         view.jlHeader.setText("Patients");
-        String[] columnNames = {"Patient Name", "Community", "City"};
-        String[][] rows = new String[patients.size()][3];
+        String[] columnNames = {"Patient ID", "Patient Name", "Community", "City"};
+        String[][] rows = new String[patients.size()][4];
         int i = 0;
         for (HashMap.Entry<String, patient> set : patients.entrySet()) {
-            rows[i][0] = set.getValue().getFirstName();
-            rows[i][1] = set.getValue().getName();
-            rows[i][2] = set.getValue().getCityName();
+            rows[i][0] = Integer.toString(set.getValue().getPatientId());
+            rows[i][1] = set.getValue().getFirstName();
+            rows[i][2] = set.getValue().getName();
+            rows[i][3] = set.getValue().getCityName();
             i++;
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);

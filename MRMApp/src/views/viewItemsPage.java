@@ -272,27 +272,34 @@ public class viewItemsPage extends javax.swing.JFrame {
         if(jlHeader.getText().equals("Patients")){
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
         int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
-        
         if(jTable2.getSelectedRowCount() == 1){
             createPatient cp = new createPatient();
-            cp.show();
-            cp.tfFirstName.setText(patients.get(patUserName).getFirstName());
-            cp.tfUserName.setText(patients.get(patUserName).getUsername());
-            cp.tfAge.setText(Integer.toString(patients.get(patUserName).getAge()));
-//          cd.jcGender.setSelectedItem(doctors.get(id).getGender());
-            cp.tfLastName.setText(patients.get(patUserName).getLastName());
-            cp.tfHouseName.setText(patients.get(patUserName).getHouseName());
-            cp.tfDrID.setText(Integer.toString(id));
-            cp.tfZipCode.setText(Integer.toString(patients.get(patUserName).getZip()));
-        }
+            for (HashMap.Entry<String, patient> set : patients.entrySet()) {
+                if(set.getValue().getPatientId() == id) {
+                    cp.show();
+                    System.out.println("patient username = " + patUserName);
+                    System.out.println(set.getValue().getFirstName());
+                    cp.tfFirstName.setText(set.getValue().getFirstName());
+                    cp.tfUserName.setText(set.getValue().getUsername());
+                    
+                    cp.tfAge.setText(Integer.toString(set.getValue().getAge()));
+        //          cd.jcGender.setSelectedItem(doctors.get(id).getGender());
+                    cp.tfLastName.setText(set.getValue().getLastName());
+                    cp.tfHouseName.setText(set.getValue().getHouseName());
+                    cp.tfDrID.setText(Integer.toString(id));
+                    cp.tfZipCode.setText(Integer.toString(set.getValue().getZip()));
+                }
+            }
             
+        }
         }
         
         else if(jlHeader.getText().equals("Doctors")){
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
-        int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
         
         if(jTable2.getSelectedRowCount() == 1){
+                    int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
+
             createDoc cd = new createDoc();
             cd.show();
             cd.tfName.setText(doctors.get(id).getFirstName());
