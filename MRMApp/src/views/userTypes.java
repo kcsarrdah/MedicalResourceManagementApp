@@ -168,7 +168,7 @@ public class userTypes extends javax.swing.JFrame {
         for (HashMap.Entry<String, communityAdmin> set : communityAdmins.entrySet()) {
             rows[i][0] = set.getValue().getAdminName();
             rows[i][1] = set.getValue().getName();
-            rows[i][1] = set.getValue().getCityName();            
+            rows[i][2] = set.getValue().getCityName();            
             i++;
         }
 

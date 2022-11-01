@@ -9,12 +9,14 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 import models.encounter;
+import models.hospital;
 import models.patient;
 import mrmapp.LoginPage;
 import mrmapp.MRMApp;
 import static mrmapp.MRMApp.cities;
 import static mrmapp.MRMApp.docName;
 import static mrmapp.MRMApp.encounters;
+import static mrmapp.MRMApp.hospitals;
 import static mrmapp.MRMApp.patUserName;
 import static mrmapp.MRMApp.patients;
 
@@ -48,6 +50,7 @@ public class patientDashboard extends javax.swing.JFrame {
         btnViewEncounter = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        btnSearchHosp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +79,13 @@ public class patientDashboard extends javax.swing.JFrame {
             }
         });
 
+        btnSearchHosp.setText("Search Hospitals");
+        btnSearchHosp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchHospActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,7 +100,9 @@ public class patientDashboard extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnViewEncounter)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnViewEncounter)
+                                    .addComponent(btnSearchHosp))
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton4)
@@ -107,7 +119,9 @@ public class patientDashboard extends javax.swing.JFrame {
                     .addComponent(btnViewEncounter)
                     .addComponent(jButton3))
                 .addGap(28, 28, 28)
-                .addComponent(jButton4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(btnSearchHosp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(19, 19, 19))
@@ -167,6 +181,18 @@ public class patientDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void btnSearchHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchHospActionPerformed
+        // TODO add your handling code here:
+        ViewDocsPatientForm vdc = new ViewDocsPatientForm();
+        vdc.jlCommName.setText(patients.get(patUserName).getName());
+        for (HashMap.Entry<Integer, hospital> set : hospitals.entrySet()) {
+            if(set.getValue().getName().equals(patients.get(patUserName).getName())) {
+                vdc.jcHosp.addItem(set.getValue().getHospitalName());
+            }
+        }
+        vdc.show();
+    }//GEN-LAST:event_btnSearchHospActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,6 +229,7 @@ public class patientDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSearchHosp;
     private javax.swing.JButton btnViewEncounter;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
