@@ -6,10 +6,13 @@ package views;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 import models.encounter;
+import models.patient;
 import mrmapp.LoginPage;
 import mrmapp.MRMApp;
+import static mrmapp.MRMApp.cities;
 import static mrmapp.MRMApp.docName;
 import static mrmapp.MRMApp.encounters;
 import static mrmapp.MRMApp.patUserName;
@@ -66,7 +69,12 @@ public class patientDashboard extends javax.swing.JFrame {
 
         jButton3.setText("View Profile");
 
-        jButton4.setText("Book Appointment");
+        jButton4.setText("Edit Profile");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +140,32 @@ public class patientDashboard extends javax.swing.JFrame {
         }
         vp.show();
     }//GEN-LAST:event_btnViewEncounterActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+
+            createPatient cp = new createPatient();
+            System.out.println(patUserName);
+            for (HashMap.Entry<String, patient> set : patients.entrySet()) {
+                if(patUserName.equals(set.getValue().getUsername())) {
+                    cp.show();
+                            for(int i=0;i<cities.size();i++) {
+               cp.jcCity.addItem(cities.get(i));
+        }
+                    System.out.println("patient username = " + patUserName);
+                    System.out.println(set.getValue().getFirstName());
+                    cp.tfFirstName.setText(set.getValue().getFirstName());
+                    cp.tfUserName.setText(set.getValue().getUsername());
+                    
+                    cp.tfAge.setText(Integer.toString(set.getValue().getAge()));
+        //          cd.jcGender.setSelectedItem(doctors.get(id).getGender());
+                    cp.tfLastName.setText(set.getValue().getLastName());
+                    cp.tfHouseName.setText(set.getValue().getHouseName());
+                    //cp.tfDrID.setText(Integer.toString(id));
+                    cp.tfZipCode.setText(Integer.toString(set.getValue().getZip()));
+                }   
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

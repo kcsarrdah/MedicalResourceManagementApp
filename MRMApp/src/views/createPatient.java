@@ -8,6 +8,7 @@ import java.util.HashMap;
 import models.community;
 import models.patient;
 import models.user;
+import mrmapp.LoginPage;
 import static mrmapp.MRMApp.communities;
 import static mrmapp.MRMApp.patients;
 import static mrmapp.MRMApp.users;
@@ -290,39 +291,19 @@ public class createPatient extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-//        this.hide();
-//        int flag = 0;
         user user = new user(tfUserName.getText(), jpPassword.getText(), "Patient");
         patient p = new patient(Integer.parseInt(tfPatientID.getText()), tfUserName.getText(), jpPassword.getText(), tfHospital.getText(), tfFirstName.getText(), tfLastName.getText(), Integer.parseInt(tfAge.getText()), jcGender.getSelectedItem().toString(), tfHouseName.getText(), jcCommunity.getSelectedItem().toString(), Integer.parseInt(tfZipCode.getText()), jcCity.getSelectedItem().toString());
-//        
-//        if(patients.containsKey(Integer.parseInt(tfUserName.getText()))) {
-//            patients.replace(tfUserName.getText(), p);
-//            flag = 1;
-//        }
-//        else{
-//         
-//
-//        }
-//        if(flag == 1) {
-//            String name = hospitals.get(Integer.parseInt(jTextField4.getText())).getHospitalName();
-//            for (HashMap.Entry<String, DoctorClass> set1 : doctors.entrySet()) {
-//                System.out.println(set1.getValue().getHospitalName());
-//                if(set1.getValue().getHospitalName().equals(name)) {
-//                    doctors.replace(set1.getKey(),new DoctorClass(set1.getValue().getUsername(),set1.getValue().getDoctorID(),set1.getValue().getName(),set1.getValue().getAge(),set1.getValue().getGender(),jTextField1.getText(),set1.getValue().getCommunityName(),set1.getValue().getHouseName(),set1.getValue().getZip(),set1.getValue().getCity()));
-//                }
-//            }
-//        }
-//        system_admin system = new system_admin();
-//        system.show();
-        
-        
-        
-        
+        if(patients.containsKey(tfUserName.getText())) {
+            patients.replace(p.getUsername(), p);
+            users.replace(user.getUsername(), user);
+        }
+        else {
+            patients.put(p.getUsername(), p);
+            users.put(user.getUsername(), user);
+        }
         this.hide();
-           patients.put(p.getUsername(), p);
-           users.put(user.getUsername(), user);
-        systemAdminDashboard ca = new systemAdminDashboard();
-        ca.show();
+           patientDashboard dp = new patientDashboard();
+            dp.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tfDrIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDrIDActionPerformed

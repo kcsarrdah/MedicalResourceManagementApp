@@ -271,32 +271,9 @@ public class viewItemsPage extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        if(jlHeader.getText().equals("Patients")){
-        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
-        int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
-        if(jTable2.getSelectedRowCount() == 1){
-            createPatient cp = new createPatient();
-            for (HashMap.Entry<String, patient> set : patients.entrySet()) {
-                if(set.getValue().getPatientId() == id) {
-                    cp.show();
-                    System.out.println("patient username = " + patUserName);
-                    System.out.println(set.getValue().getFirstName());
-                    cp.tfFirstName.setText(set.getValue().getFirstName());
-                    cp.tfUserName.setText(set.getValue().getUsername());
-                    
-                    cp.tfAge.setText(Integer.toString(set.getValue().getAge()));
-        //          cd.jcGender.setSelectedItem(doctors.get(id).getGender());
-                    cp.tfLastName.setText(set.getValue().getLastName());
-                    cp.tfHouseName.setText(set.getValue().getHouseName());
-                    cp.tfDrID.setText(Integer.toString(id));
-                    cp.tfZipCode.setText(Integer.toString(set.getValue().getZip()));
-                }
-            }
-            
-        }
-        }
+
         
-        else if(jlHeader.getText().equals("Doctors")){
+        if(jlHeader.getText().equals("Doctors")){
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
         createDoc cd = new createDoc();
         for(int i=0;i<cities.size();i++) {
@@ -323,7 +300,7 @@ public class viewItemsPage extends javax.swing.JFrame {
         }
             
         
-        if(jlHeader.getText().equals("Hospitals")){
+        else if(jlHeader.getText().equals("Hospitals")){
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
         int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
         
