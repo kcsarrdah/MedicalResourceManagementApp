@@ -179,17 +179,17 @@ public class viewItemsPage extends javax.swing.JFrame {
         }
             cc.show();
         }
-        else if(jlHeader.getText() ==  "Hospitals"){
-            createHospital ch = new createHospital();
-        ch.jcCommunity.removeAllItems();
-        for (HashMap.Entry<String, community> set : communities.entrySet()) {
-            String cityName = set.getValue().getCityName();
-            if(ch.jcCity.getSelectedItem().toString().equals(cityName)) {
-                ch.jcCommunity.addItem(set.getValue().getName());
-            }
-        }
-        ch.show();
-        }
+//        else if(jlHeader.getText() ==  "Hospitals"){
+//            createHospital ch = new createHospital();
+//        ch.jcCommunity.removeAllItems();
+//        for (HashMap.Entry<String, community> set : communities.entrySet()) {
+//            String cityName = set.getValue().getCityName();
+//            if(ch.jcCity.getSelectedItem().toString().equals(cityName)) {
+//                ch.jcCommunity.addItem(set.getValue().getName());
+//            }
+//        }
+//        ch.show();
+//        }
         else if(jlHeader.getText() == "Patients"){
             this.hide();
             createPatient cp = new createPatient();
@@ -254,6 +254,7 @@ public class viewItemsPage extends javax.swing.JFrame {
                 for (HashMap.Entry<String, doctor> set1 : doctors.entrySet()) {
                     if(set1.getValue().getHospitalName().equals(name)) {
                         doctors.remove(set1.getKey());
+                        tableModel.removeRow(jTable2.getSelectedRow());
                     }
                 }
             }
@@ -298,6 +299,10 @@ public class viewItemsPage extends javax.swing.JFrame {
         else if(jlHeader.getText().equals("Doctors")){
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
         createDoc cd = new createDoc();
+        for(int i=0;i<cities.size();i++) {
+               cd.jcCity.addItem(cities.get(i));
+        }
+        
         if(jTable2.getSelectedRowCount() == 1){
             int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
             for (HashMap.Entry<String, doctor> set : doctors.entrySet()) {
@@ -318,15 +323,20 @@ public class viewItemsPage extends javax.swing.JFrame {
         }
             
         
-        if(jlHeader.getText().equals("Hospital")){
+        if(jlHeader.getText().equals("Hospitals")){
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
         int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
         
+        
         if(jTable2.getSelectedRowCount() == 1){
             createHospital ch = new createHospital();
+            for(int i=0;i<cities.size();i++) {
+               ch.jcCity.addItem(cities.get(i));
+        }
             ch.show();
             ch.tfName.setText(hospitals.get(id).getHospitalName());
             ch.tfZip.setText(Integer.toString(hospitals.get(id).getZip()));
+            ch.tfHospitalID.setText(Integer.toString(hospitals.get(id).getHospitalID()));
         }
         }
     }//GEN-LAST:event_btnEditActionPerformed

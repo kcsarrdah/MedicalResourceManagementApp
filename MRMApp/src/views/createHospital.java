@@ -163,7 +163,7 @@ public class createHospital extends javax.swing.JFrame {
         
         this.hide();
         int flag = 0;
-        hospital hosp = new hospital(Integer.parseInt(tfZip.getText()),tfName.getText(),jcCommunity.getSelectedItem().toString(),Integer.parseInt(tfZip.getText()), jcCity.getSelectedItem().toString());
+        hospital hosp = new hospital(Integer.parseInt(tfHospitalID.getText()),tfName.getText(),jcCommunity.getSelectedItem().toString(),Integer.parseInt(tfZip.getText()), jcCity.getSelectedItem().toString());
         if(hospitals.containsKey(Integer.parseInt(tfHospitalID.getText()))) {
             hospitals.replace(Integer.parseInt(tfHospitalID.getText()), hosp);
             flag = 1;
@@ -192,6 +192,7 @@ public class createHospital extends javax.swing.JFrame {
             }
         }
         systemAdminDashboard system = new systemAdminDashboard();
+        
         system.show();
         
         

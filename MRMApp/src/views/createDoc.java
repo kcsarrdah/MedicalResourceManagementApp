@@ -273,6 +273,10 @@ public class createDoc extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        
+        
+        
+        
         user user = new user(tfUserName.getText(), pfPassword.getText(), "Doctor");
         users.put(user.getUsername(), user);
         doctor dr = new doctor(tfUserName.getText(),Integer.parseInt(tfDocID.getText()),jcHospital.getSelectedItem().toString(),
@@ -286,9 +290,15 @@ public class createDoc extends javax.swing.JFrame {
                 jcCity.getSelectedItem().toString());
         
         
+        
+        if(doctors.containsKey(tfUserName.getText())) {
+            doctors.replace(dr.getUserName(), dr);
+            users.replace(user.getUsername(), user);
+        }
         doctors.put(dr.getUserName(), dr);
+        users.put(user.getUsername(), user);
         this.hide();
-        systemAdminDashboard sd = new systemAdminDashboard();
+        userTypes sd = new userTypes();
         sd.show();
     }//GEN-LAST:event_btnSaveActionPerformed
 
