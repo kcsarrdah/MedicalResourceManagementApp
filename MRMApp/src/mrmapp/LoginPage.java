@@ -192,6 +192,7 @@ public class LoginPage extends javax.swing.JFrame {
                  this.hide();
                  communityAdminDashboard cd = new communityAdminDashboard();
                  cd.getComm(communityAdmins.get(userName).getName(),communityAdmins.get(userName).getCityName());
+                 cd.jLabel1.setText(communityAdmins.get(userName).getName());
                  cd.show();
              }
         }

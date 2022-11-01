@@ -144,14 +144,18 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         viewCommunityAdmin view = new viewCommunityAdmin();
         view.jLabel1.setText(btnHospital.getText());
         String[] columnNames = {"Hospital ID", "HospitalName", "City", "Community Name"};
-        String[][] rows = new String[hospitals.size()][3];
+        String[][] rows = new String[hospitals.size()][4];
         int i = 0;
         for(HashMap.Entry<Integer, hospital>set:hospitals.entrySet()){
+            System.out.println(jLabel1.getText());
+            if(set.getValue().getName().equals(jLabel1.getText())){
+            System.out.println("here now");
             rows[i][0] = Integer.toString(set.getValue().getHospitalID());
             rows[i][1] = set.getValue().getHospitalName();
             rows[i][2] = set.getValue().getCityName();
             rows[i][3] = set.getValue().getName();
             i++;
+            }
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);

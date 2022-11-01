@@ -88,7 +88,7 @@ public class MRMApp {
         
         hospital a = new hospital(123, "a", "Market Yard", 411037, "pune");
         hospital b = new hospital(124, "b", "Roxbury", 02120, "Boston");
-        hospital c = new hospital(1234, "c", "Mission Hill", 02120, "Boston");
+        hospital c = new hospital(1234, "c", "MissionHill", 02120, "Boston");
         hospital d = new hospital(234, "d", "Panvel", 411037, "Mumbai");
         
         
