@@ -4,6 +4,7 @@
  */
 package views;
 
+import javax.swing.JOptionPane;
 import models.city;
 import static mrmapp.MRMApp.cities;
 
@@ -63,7 +64,7 @@ public class createCity extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,9 +73,9 @@ public class createCity extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addComponent(btnCreate)
-                .addGap(36, 36, 36))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -82,11 +83,18 @@ public class createCity extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        try{
         city City = new city(tfName.getText());
         cities.add(City.getCityName());
         this.hide();
         systemAdminDashboard sd = new systemAdminDashboard();
         sd.show();
+        }
+        catch(Exception e){
+            this.show();
+            JOptionPane.showMessageDialog(this, "Please Fill out all the fields with appropriate details");
+        }
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void tfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed

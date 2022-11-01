@@ -87,24 +87,24 @@ public class communityAdminDashboard extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(67, 67, 67)
+                                .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82)
-                .addComponent(btnHouse)
-                .addGap(39, 39, 39)
-                .addComponent(btnHospital)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHouse)
+                    .addComponent(btnHospital))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
         );
@@ -136,6 +136,7 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton3.setVisible(false);
         view.show();
     }//GEN-LAST:event_btnHouseActionPerformed
 
@@ -159,6 +160,7 @@ public class communityAdminDashboard extends javax.swing.JFrame {
         }
         DefaultTableModel model = new DefaultTableModel (rows, columnNames);
         view.jTable1.setModel(model);
+        view.jButton3.setVisible(false);
         view.show();
     }//GEN-LAST:event_btnHospitalActionPerformed
 

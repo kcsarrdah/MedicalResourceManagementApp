@@ -57,6 +57,7 @@ public class MRMApp {
         user anannyaa = new user("anannya", "123", "Patient"); 
         user adityaa = new user("aditya", "124", "Patient"); 
         user Sankalp = new user("twofaced", "125", "Patient"); 
+        user michael = new user("Michael", "000", "Doctor");
         
         users.put(albert.getUsername(), albert);
         users.put(robin.getUsername(), robin);
@@ -66,6 +67,7 @@ public class MRMApp {
         users.put(anannyaa.getUsername(), anannyaa);
         users.put(adityaa.getUsername(), adityaa);
         users.put(Sankalp.getUsername(), Sankalp);
+        users.put(michael.getUsername(), michael);
         
         community MissionHill = new community("Mission Hill", 02120, "Boston");
         community MarketYard = new community("Market Yard", 411037, "pune");
@@ -79,7 +81,7 @@ public class MRMApp {
         
         
         doctor rick = new doctor("Richard",1000, "a", "Richard", "Bu", 28, "male", "houseA", "Roxbury", 02120, "Boston");
-        doctor mike = new doctor("Michael",1001,"b", "Michael", "Wu", 38, "male", "houseB", "MissionHill", 02120, "Boston");
+        doctor mike = new doctor("Michael",1001,"b", "Michael", "Wu", 38, "male", "houseB", "Mission Hill", 02120, "Boston");
         doctor par = new doctor("parvati",1002, "c", "parvati", "saraswati", 42, "female", "houseC", "MarketYard", 411037, "Pune");
         
         doctors.put(rick.getUserName(), rick);

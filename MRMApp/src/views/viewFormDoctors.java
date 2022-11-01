@@ -4,6 +4,10 @@
  */
 package views;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import static mrmapp.MRMApp.encounters;
+
 /**
  *
  * @author kcsar
@@ -30,6 +34,7 @@ public class viewFormDoctors extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        btnVitals = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,7 +43,7 @@ public class viewFormDoctors extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Patient ID", "Name", "Blood Pressure", "Heart Rate", "Temperature"
+                "Patient ID", "Name", "Date", "Blood Pressure", "Heart Rate", "Temperature"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -52,21 +57,32 @@ public class viewFormDoctors extends javax.swing.JFrame {
             }
         });
 
+        btnVitals.setText("Add Vitals");
+        btnVitals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVitalsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(330, 330, 330))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(201, 201, 201)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnVitals)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +92,9 @@ public class viewFormDoctors extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(btnVitals))
                 .addContainerGap())
         );
 
@@ -87,6 +105,44 @@ public class viewFormDoctors extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.hide();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnVitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVitalsActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        createEncounter enc = new createEncounter();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        if(jTable1.getSelectedRowCount() == 1) {
+            int id = Integer.parseInt(tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString());
+            for(int i=0;i<encounters.size();i++) {
+                if(encounters.get(i).getPatientID() == id) {
+                    enc.tfName.setText(encounters.get(i).getPatientName());
+                    enc.tfName.setEnabled(false);
+                    enc.tfPatientId.setText(Integer.toString(encounters.get(i).getPatientID()));
+                    enc.tfPatientId.setEnabled(false);
+                    enc.tfDrID.setText(Integer.toString(encounters.get(i).getDoctorID()));
+                    enc.tfDrID.setEnabled(false);
+                    enc.tfDrName.setText(encounters.get(i).getDoctorName());
+                    enc.tfDrName.setEnabled(false);
+                    enc.tfHospName.setText(encounters.get(i).getHospitalName());
+                    enc.tfHospName.setEnabled(false);
+                    enc.tfBP.setText(Float.toString(encounters.get(i).getBloodPressure()));
+                    enc.tfTemp.setText(Float.toString(encounters.get(i).getTemperature()));
+                    enc.TfHR.setText(Float.toString(encounters.get(i).getHeartRate()));
+                    enc.jDateChooser.setDate(encounters.get(i).getDate());
+                    enc.jDateChooser.setEnabled(false);
+                }
+            }
+            enc.show();
+        }
+        else {
+               if(jTable1.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "The table is empty or select a row.");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Select one row at a time.");
+               }
+        }
+    }//GEN-LAST:event_btnVitalsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +181,7 @@ public class viewFormDoctors extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnVitals;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;

@@ -5,6 +5,7 @@
 package views;
 
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import models.community;
 import models.doctor;
 import models.hospital;
@@ -160,8 +161,8 @@ public class createHospital extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         
-        
-        this.hide();
+        try{
+            this.hide();
         int flag = 0;
         hospital hosp = new hospital(Integer.parseInt(tfHospitalID.getText()),tfName.getText(),jcCommunity.getSelectedItem().toString(),Integer.parseInt(tfZip.getText()), jcCity.getSelectedItem().toString());
         if(hospitals.containsKey(Integer.parseInt(tfHospitalID.getText()))) {
@@ -205,6 +206,13 @@ public class createHospital extends javax.swing.JFrame {
         this.hide();
         systemAdminDashboard sd = new systemAdminDashboard();
         sd.show();
+            
+        }
+        catch(Exception e){
+            this.show();
+                    JOptionPane.showMessageDialog(this, "Insert appropriate details.");
+        }
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jcCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCityActionPerformed
