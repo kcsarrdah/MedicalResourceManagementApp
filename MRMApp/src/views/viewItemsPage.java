@@ -14,6 +14,7 @@ import models.doctor;
 import models.patient;
 import static mrmapp.MRMApp.cities;
 import static mrmapp.MRMApp.communities;
+import static mrmapp.MRMApp.docUserName;
 import static mrmapp.MRMApp.doctors;
 import static mrmapp.MRMApp.hospitals;
 import static mrmapp.MRMApp.patUserName;
@@ -296,21 +297,23 @@ public class viewItemsPage extends javax.swing.JFrame {
         
         else if(jlHeader.getText().equals("Doctors")){
         DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
-        
+        createDoc cd = new createDoc();
         if(jTable2.getSelectedRowCount() == 1){
-                    int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
-
-            createDoc cd = new createDoc();
+            int id = Integer.parseInt(jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
+            for (HashMap.Entry<String, doctor> set : doctors.entrySet()) {
+            if(set.getValue().getDoctorID()== id) {
             cd.show();
-            cd.tfName.setText(doctors.get(id).getFirstName());
-            cd.tfUserName.setText(doctors.get(id).getUserName());
-            cd.tfAge.setText(Integer.toString(doctors.get(id).getAge()));
+            cd.tfName.setText(set.getValue().getFirstName());
+            cd.tfUserName.setText(set.getValue().getUserName());
+            cd.tfAge.setText(Integer.toString(set.getValue().getAge()));
 //          cd.jcGender.setSelectedItem(doctors.get(id).getGender());
-            cd.tfLastname.setText(doctors.get(id).getLastName());
-            cd.tfHouseName.setText(doctors.get(id).getHouseName());
+            cd.tfLastname.setText(set.getValue().getLastName());
+            cd.tfHouseName.setText(set.getValue().getHouseName());
             cd.tfDocID.setText(Integer.toString(id));
-            cd.tfZipCode.setText(Integer.toString(doctors.get(id).getZip()));
+            cd.tfZipCode.setText(Integer.toString(set.getValue().getZip()));
             cd.show();
+                }
+            }
         }
         }
             

@@ -6,8 +6,10 @@ package views;
 
 import java.util.HashMap;
 import models.community;
+import models.doctor;
 import models.hospital;
 import static mrmapp.MRMApp.communities;
+import static mrmapp.MRMApp.doctors;
 import static mrmapp.MRMApp.hospitals;
 
 /**
@@ -157,6 +159,44 @@ public class createHospital extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        
+        
+        this.hide();
+        int flag = 0;
+        hospital hosp = new hospital(Integer.parseInt(tfZip.getText()),tfName.getText(),jcCommunity.getSelectedItem().toString(),Integer.parseInt(tfZip.getText()), jcCity.getSelectedItem().toString());
+        if(hospitals.containsKey(Integer.parseInt(tfHospitalID.getText()))) {
+            hospitals.replace(Integer.parseInt(tfHospitalID.getText()), hosp);
+            flag = 1;
+        }
+        else {
+            hospitals.put(hosp.getHospitalID(), hosp);
+        }
+        if(flag == 1) {
+            String name = hospitals.get(Integer.parseInt(tfHospitalID.getText())).getHospitalName();
+            for (HashMap.Entry<String, doctor> set1 : doctors.entrySet()) {
+                System.out.println(set1.getValue().getHospitalName());
+                if(set1.getValue().getHospitalName().equals(name)) {
+                      doctors.replace(set1.getKey(),
+                              new doctor(set1.getValue().getUserName(),
+                                      set1.getValue().getDoctorID(),
+                                      set1.getValue().getHospitalName(),
+                                      set1.getValue().getFirstName(),
+                                      set1.getValue().getLastName(),
+                                      set1.getValue().getAge(),
+                                      set1.getValue().getGender(),
+                                      set1.getValue().getHouseName(),
+                                      set1.getValue().getName(),
+                                      set1.getValue().getZip(),
+                                      set1.getValue().getCityName()));
+                }
+            }
+        }
+        systemAdminDashboard system = new systemAdminDashboard();
+        system.show();
+        
+        
+        
+        
         System.out.println(tfName.getText());
         hospital h = new hospital(Integer.parseInt(tfHospitalID.getText()), tfName.getText(), jcCommunity.getSelectedItem().toString(),Integer.parseInt(tfZip.getText()), jcCity.getSelectedItem().toString());
         hospitals.put(h.getHospitalID(), h);

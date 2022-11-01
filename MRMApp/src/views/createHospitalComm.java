@@ -121,7 +121,8 @@ public class createHospitalComm extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNameActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:  
+        
         hospital h = new hospital(Integer.parseInt(tfHospitalID.getText()), tfName.getText(), MRMApp.commName,Integer.parseInt(tfZip.getText()), MRMApp.cityName);
         hospitals.put(h.getHospitalID(), h);
         this.hide();
